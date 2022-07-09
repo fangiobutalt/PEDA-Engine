@@ -515,8 +515,10 @@ switch (curStage)
 				limoKillingState = 0;
 
 			case 'mall': //Week 5 - Cocoa, Eggnog
-                if(ClientPrefs.cenoptim) {
 				var bg:BGSprite = new BGSprite('christmas/bgWalls', -1000, -500, 0.2, 0.2);
+				bg.setGraphicSize(Std.int(bg.width * 0.8));
+				bg.updateHitbox();
+				add(bg);
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
 				bg.updateHitbox();
 				add(bg);
