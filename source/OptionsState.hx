@@ -1083,7 +1083,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 			case 'Esconder Barra de Tempo':
 				daText = "Se checado não aparece a barra de tempo";
 			case 'Hitsounds':
-				daText = "Apenas, OSU."
+				daText = "Apenas, OSU.";
 					case 'Volume do osu':
 				daText = "Volume do Tap Tap";
 		}
