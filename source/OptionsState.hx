@@ -728,6 +728,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 	static var noCheckbox:Array<String> = [
 		'Framerate',
 		'Note Delay',
+		'Volume do osu',
 		'Scroll Speed',
 		'Tamanho da Nota'
 	];
@@ -744,6 +745,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		#end
 		'Jogatina',
 	'Hitsounds',
+		'Volume do osu',
 		'Downscroll',
 		'Middlescroll',
 		'Ghost Tapping',
@@ -997,6 +999,15 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.noteOffset += add * mult;
 						if(ClientPrefs.noteOffset < 0) ClientPrefs.noteOffset = 0;
 						else if(ClientPrefs.noteOffset > 500) ClientPrefs.noteOffset = 500;
+					case 'Volume do osu':
+						ClientPrefs.osusom += addo;
+						if(ClientPrefs.roberto) {
+						var hitsound:FlxSound = new FlxSound().loadEmbedded(Paths.sound('osu', 'shared'));
+						hitsound.volume = ClientPrefs.osusom;
+						hitsound.play();
+						}
+						if(ClientPrefs.osusom < 0.1) ClientPrefs.osusom = 0.1;
+						else if(ClientPrefs.osusom > 1.0) ClientPrefs.osusom = 1.0; 
 				}
 				reloadValues();
 
@@ -1073,6 +1084,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "Se checado não aparece a barra de tempo";
 			case 'Hitsounds':
 				daText = "Apenas, OSU."
+					case 'Volume do osu':
+				daText = "Volume do Tap Tap";
 		}
 		descText.text = daText;
 
@@ -1171,6 +1184,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						if (ClientPrefs.noteSize == 0.7) daText += "(Default)";
 					case 'Scroll Speed':
 						daText = ClientPrefs.speed+"";
+						case 'Volume do osu':
+						daText = ClientPrefs.osusom + '';
 				}
 				var lastTracker:FlxSprite = text.sprTracker;
 				text.sprTracker = null;
