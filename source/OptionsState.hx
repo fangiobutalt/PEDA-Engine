@@ -24,6 +24,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
+import flixel.system.FlxSound;
 import Controls;
 
 using StringTools;
@@ -967,6 +968,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		} else {
 			if(controls.UI_LEFT || controls.UI_RIGHT) {
 				var add:Int = controls.UI_LEFT ? -1 : 1;
+				var addo:Float = controls.UI_LEFT ? -0.1 : 0.1;
 				if(holdTime > 0.5 || controls.UI_LEFT_P || controls.UI_RIGHT_P)
 				switch(options[curSelected]) {
 					case 'Framerate':
