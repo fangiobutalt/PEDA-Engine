@@ -69,7 +69,7 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['Tu é um Merda! (Redacted)', 0.2], //From 0% to 19%
+		['Tu é um Merda! (Ruinzão!)', 0.2], //From 0% to 19%
 		['Merda (FF-)', 0.4], //From 20% to 39%
 		['Ruim (F-)', 0.5], //From 40% to 49%
 		['Bruh (D-)', 0.6], //From 50% to 59%
@@ -371,13 +371,14 @@ class PlayState extends MusicBeatState
 		dadGroup = new FlxSpriteGroup(DAD_X, DAD_Y);
 		gfGroup = new FlxSpriteGroup(GF_X, GF_Y);
 
-		switch (curStage)
+		switch (curStage) 
 		{
 			case 'stage': //Week 1
+				if(ClientPrefs.cenoptim) {
 				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
 				add(bg);
 
-				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
+				stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
 				add(stageFront);
@@ -398,8 +399,11 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
+			}
 
 			case 'spooky': //Week 2
+				if(ClientPrefs.cenoptim) {
+		
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
 				} else {
@@ -415,8 +419,10 @@ class PlayState extends MusicBeatState
 				//PRECACHE SOUNDS
 				CoolUtil.precacheSound('thunder_1');
 				CoolUtil.precacheSound('thunder_2');
+			}
 
 			case 'philly': //Week 3
+		if(ClientPrefs.cenoptim) {
 				if(!ClientPrefs.lowQuality) {
 					var bg:BGSprite = new BGSprite('philly/sky', -100, 0, 0.1, 0.1);
 					add(bg);
@@ -453,8 +459,10 @@ class PlayState extends MusicBeatState
 
 				var street:BGSprite = new BGSprite('philly/street', -40, 50);
 				add(street);
+		}
 
 			case 'limo': //Week 4
+		if(ClientPrefs.cenoptim) {
 				var skyBG:BGSprite = new BGSprite('limo/limoSunset', -120, -50, 0.1, 0.1);
 				add(skyBG);
 
@@ -496,14 +504,17 @@ class PlayState extends MusicBeatState
 					//PRECACHE SOUND
 					CoolUtil.precacheSound('dancerdeath');
 				}
+		
 
 				limo = new BGSprite('limo/limoDrive', -120, 550, 1, 1, ['Limo stage'], true);
 
 				fastCar = new BGSprite('limo/fastCarLol', -300, 160);
 				fastCar.active = true;
 				limoKillingState = 0;
+	}
 
 			case 'mall': //Week 5 - Cocoa, Eggnog
+	if(ClientPrefs.cenoptim) {
 				var bg:BGSprite = new BGSprite('christmas/bgWalls', -1000, -500, 0.2, 0.2);
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
 				bg.updateHitbox();
@@ -536,8 +547,10 @@ class PlayState extends MusicBeatState
 				santa = new BGSprite('christmas/santa', -840, 150, 1, 1, ['santa idle in fear']);
 				add(santa);
 				CoolUtil.precacheSound('Lights_Shut_off');
+}
 
 			case 'mallEvil': //Week 5 - Winter Horrorland
+if(ClientPrefs.cenoptim) {
 				var bg:BGSprite = new BGSprite('christmas/evilBG', -400, -500, 0.2, 0.2);
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
 				bg.updateHitbox();
@@ -548,13 +561,15 @@ class PlayState extends MusicBeatState
 
 				var evilSnow:BGSprite = new BGSprite('christmas/evilSnow', -200, 700);
 				add(evilSnow);
+}
 
 			case 'school': //Week 6 - Senpai, Roses
 				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-pixel';
 				GameOverSubstate.loopSoundName = 'gameOver-pixel';
 				GameOverSubstate.endSoundName = 'gameOverEnd-pixel';
 				GameOverSubstate.characterName = 'bf-pixel-dead';
-
+			
+if(ClientPrefs.cenoptim) {
 				var bgSky:BGSprite = new BGSprite('weeb/weebSky', 0, 0, 0.1, 0.1);
 				add(bgSky);
 				bgSky.antialiasing = false;
@@ -612,8 +627,10 @@ class PlayState extends MusicBeatState
 					bgGirls.updateHitbox();
 					add(bgGirls);
 				}
+}
 
 			case 'schoolEvil': //Week 6 - Thorns
+if(ClientPrefs.cenoptim) {
 				GameOverSubstate.deathSoundName = 'fnf_loss_sfx-pixel';
 				GameOverSubstate.loopSoundName = 'gameOver-pixel';
 				GameOverSubstate.endSoundName = 'gameOverEnd-pixel';
@@ -645,6 +662,7 @@ class PlayState extends MusicBeatState
 					add(bg);
 				}
 		}
+}
 
 		if(isPixelStage) {
 			introSoundsSuffix = '-pixel';
@@ -729,10 +747,16 @@ class PlayState extends MusicBeatState
 		startCharacterPos(gf);
 		gf.scrollFactor.set(0.95, 0.95);
 		gfGroup.add(gf);
+		if(ClientPrefs.optimizedMode) {
+		gf.visible = false; //Ao contrário de ser em sprite, fiz por code, mas continua sendo precário
+		}
 
 		dad = new Character(0, 0, SONG.player2);
 		startCharacterPos(dad, true);
 		dadGroup.add(dad);
+		if(ClientPrefs.optimizedMode) {
+		dad.visible = false; //Ao contrário de ser em sprite, fiz por code, mas continua sendo precário
+		}
 		
 		switch(charSelection){
 		case 0:
@@ -749,6 +773,9 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
+		if(ClientPrefs.optimizedMode) {
+		boyfriend.visible = false; //Ao contrário de ser em sprite, fiz por code, mas continua sendo precário
+		}
 		
 		var camPos:FlxPoint = new FlxPoint(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		camPos.x += gf.cameraPosition[0];
@@ -756,7 +783,7 @@ class PlayState extends MusicBeatState
 
 		if(dad.curCharacter.startsWith('gf')) {
 			dad.setPosition(GF_X, GF_Y);
-			gf.visible = false;
+			gf.visible = false; //Tirei essa idéia quando bati o olho aqui
 		}
 
 		switch(curStage)
@@ -1072,6 +1099,7 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote1');
 		CoolUtil.precacheSound('missnote2');
 		CoolUtil.precacheSound('missnote3');
+		if (ClientPrefs.roberto){CoolUtil.precacheSound('osu');}
 
 		#if desktop
 		// Updating Discord Rich Presence.
@@ -3137,6 +3165,9 @@ class PlayState extends MusicBeatState
 		if(!practiceMode && !cpuControlled) {
 			songScore += score;
 			songHits++;
+			
+			if (ClientPrefs.roberto){FlxG.sound.play(Paths.sound('osu'), ClientPrefs.osusom);}
+			
 			RecalculateRating();
 			if(scoreTxtTween != null) {
 				scoreTxtTween.cancel();
