@@ -9,7 +9,7 @@ import Controls;
 class ClientPrefs {
 	public static var downScroll:Bool = false;
 	public static var optimizedMode:Bool = false;
-	public static var cenoptim:Bool = true;
+	public static var cenoptim:Bool = true; //Se desativar, o cenário dá bye bye.\nCom um problema:\nPode deslocar os personagens.
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
