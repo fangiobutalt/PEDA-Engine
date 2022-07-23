@@ -24,6 +24,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
+import flixel.system.FlxSound;
 import Controls;
 
 using StringTools;
@@ -728,6 +729,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 	static var noCheckbox:Array<String> = [
 		'Framerate',
 		'Note Delay',
+		'Volume do osu',
 		'Scroll Speed',
 		'Tamanho da Nota'
 	];
@@ -737,12 +739,14 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Qualidade Baixa',
 		'Anti-Serrilhado',
 		'Data em Cache Persistente',
-		'Remover GF',
-		'Remover BG (teste)',
+		'Remover personagens',
+		'Remover BGs',
 		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		#end
 		'Jogatina',
+	'Hitsounds',
+		'Volume do osu',
 		'Downscroll',
 		'Middlescroll',
 		'Ghost Tapping',
@@ -755,8 +759,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Esconder a Barra de Tempo',
 		'Luzes Piscantes omg',
 		'Camera Zooms',
-		'Contador de FPS',
-		'optimizedMode'
+		'Contador de FPS'
 
 	];
 
@@ -914,11 +917,11 @@ class PreferencesSubstate extends MusicBeatSubstate
 						}
 						OptionsState.menuBG.antialiasing = ClientPrefs.globalAntialiasing;
 					
-					case 'Remover GF':
+					case 'Remover personagens':
 						ClientPrefs.optimizedMode = !ClientPrefs.optimizedMode;
 				
-					case 'Remover BG (teste)':
-						ClientPrefs.cenoptim = !ClientPrefs.cenoptim
+					case 'Remover BGs':
+						ClientPrefs.cenoptim = !ClientPrefs.cenoptim;
 
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
@@ -956,6 +959,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 					
 					case 'Esconder Barra de Tempo':
 						ClientPrefs.hideTime = !ClientPrefs.hideTime;
+					case 'Hitsounds':
+						ClientPrefs.roberto = !ClientPrefs.roberto;
 				}
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				reloadValues();
@@ -963,6 +968,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		} else {
 			if(controls.UI_LEFT || controls.UI_RIGHT) {
 				var add:Int = controls.UI_LEFT ? -1 : 1;
+				var addo:Float = controls.UI_LEFT ? -0.1 : 0.1;
 				if(holdTime > 0.5 || controls.UI_LEFT_P || controls.UI_RIGHT_P)
 				switch(options[curSelected]) {
 					case 'Framerate':
@@ -995,6 +1001,15 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.noteOffset += add * mult;
 						if(ClientPrefs.noteOffset < 0) ClientPrefs.noteOffset = 0;
 						else if(ClientPrefs.noteOffset > 500) ClientPrefs.noteOffset = 500;
+					case 'Volume do osu':
+						ClientPrefs.osusom += addo;
+						if(ClientPrefs.roberto) {
+						var hitsound:FlxSound = new FlxSound().loadEmbedded(Paths.sound('osu', 'shared'));
+						hitsound.volume = ClientPrefs.osusom;
+						hitsound.play();
+						}
+						if(ClientPrefs.osusom < 0.1) ClientPrefs.osusom = 0.1;
+						else if(ClientPrefs.osusom > 1.0) ClientPrefs.osusom = 1.0; 
 				}
 				reloadValues();
 
@@ -1033,10 +1048,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "Muda o quão tarde a nota vai spawnar\nUtíl pra não dar lag de audío pra quem tem Fones Bluetooth";
 			case 'Contador de FPS':
 				daText = "Se Desmarcado esconde o framerate.";
-			case 'Remover GF':
-				daText = "otimização";
-			case 'Remover BG (teste)':
-				daText = "otimização";	
+			case 'Remover personagens':
+				daText = "Remove todos os personagens";
+			case 'Remover BGs':
+				daText = "Se desativar, o cenário dá bye bye.\nCom um problema:\nPode deslocar os personagens.";	
 			case 'Qualidade Baixa':
 				daText = "Se checado e... sla macho,\nsó sei que esconde a maioria dos objetos inuteis, fazendo o jogo roda liso";
 			case 'Data em Cache Persistente':
@@ -1069,6 +1084,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "Deixa teu HUD limpim.";
 			case 'Esconder Barra de Tempo':
 				daText = "Se checado não aparece a barra de tempo";
+			case 'Hitsounds':
+				daText = "Apenas, OSU.";
+					case 'Volume do osu':
+				daText = "Volume do Tap Tap";
 		}
 		descText.text = daText;
 
@@ -1117,9 +1136,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.showFPS;
 					case 'Qualidade Baixa':
 						daValue = ClientPrefs.lowQuality;
-					case 'Remover GF':
+					case 'Remover personagens':
 						daValue = ClientPrefs.optimizedMode;
-					case 'Remover BG (teste)':
+					case 'Remover BGs':
 						daValue = ClientPrefs.cenoptim;
 					case 'Anti-Serrilhado':
 						daValue = ClientPrefs.globalAntialiasing;
@@ -1147,6 +1166,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.imagesPersist;
 					case 'Hide Song Length':
 						daValue = ClientPrefs.hideTime;
+					case 'Hitsounds':
+						daValue = ClientPrefs.roberto;
 				}
 				checkbox.daValue = daValue;
 			}
@@ -1165,6 +1186,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						if (ClientPrefs.noteSize == 0.7) daText += "(Default)";
 					case 'Scroll Speed':
 						daText = ClientPrefs.speed+"";
+						case 'Volume do osu':
+						daText = ClientPrefs.osusom + '';
 				}
 				var lastTracker:FlxSprite = text.sprTracker;
 				text.sprTracker = null;

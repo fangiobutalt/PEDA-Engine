@@ -7,9 +7,11 @@ import flixel.graphics.FlxGraphic;
 import Controls;
 
 class ClientPrefs {
+	public static var osusom:Float = 0.5;
+	public static var roberto:Bool = false;
 	public static var downScroll:Bool = false;
 	public static var optimizedMode:Bool = false;
-	public static var cenoptim:Bool = true;
+	public static var cenoptim:Bool = true; //Se desativar, o cenário dá bye bye.\nCom um problema:\nPode deslocar os personagens.
 	public static var middleScroll:Bool = false;
 	public static var showFPS:Bool = true;
 	public static var flashing:Bool = true;
@@ -58,6 +60,8 @@ class ClientPrefs {
 
 	public static function saveSettings() {
 		FlxG.save.data.downScroll = downScroll;
+		FlxG.save.data.roberto = roberto;
+		FlxG.save.data.osusom = osusom;
 		FlxG.save.data.optimizedMode = optimizedMode;
 		FlxG.save.data.cenoptim = cenoptim;
 		FlxG.save.data.middleScroll = middleScroll;
@@ -96,6 +100,12 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.optimizedMode != null) {
 			optimizedMode = FlxG.save.data.optimizedMode;
+		}
+		if(FlxG.save.data.osusom != null) {
+			osusom = FlxG.save.data.osusom;
+		}
+		if(FlxG.save.data.roberto != null) {
+			roberto = FlxG.save.data.roberto;
 		}
 		if(FlxG.save.data.cenoptim != null) {
 			cenoptim = FlxG.save.data.cenoptim;
