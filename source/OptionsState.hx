@@ -920,7 +920,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.optimizedMode = !ClientPrefs.optimizedMode;
 				
 					case 'Remover BGs':
-						ClientPrefs.cenoptim = !ClientPrefs.cenoptim
+						ClientPrefs.cenoptim = !ClientPrefs.cenoptim;
 
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
