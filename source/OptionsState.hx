@@ -979,8 +979,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.noteSize += add/20;
 						if(ClientPrefs.noteSize < 0.5) ClientPrefs.noteSize = 0.5;
 						else if(ClientPrefs.noteSize > 1.5) ClientPrefs.noteSize = 1.5;
-
-					case 'Note Delay':
+case 'Note Delay':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
 							mult = 2;
@@ -988,7 +987,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.noteOffset += add * mult;
 						if(ClientPrefs.noteOffset < 0) ClientPrefs.noteOffset = 0;
 						else if(ClientPrefs.noteOffset > 500) ClientPrefs.noteOffset = 500;
-				}
 				}
 				reloadValues();
 
