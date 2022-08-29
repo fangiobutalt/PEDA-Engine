@@ -121,6 +121,9 @@
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="actuate" />
 	<haxelib name="extension-webm"/>
+	
+		<architecture name="armv7" exclude="arm64" if="android" />
+	<architecture name="x86" if="android" />
 
 	<!-- <haxelib name="markdown" /> -->
 	<!-- <haxelib name="HtmlParser" /> -->
