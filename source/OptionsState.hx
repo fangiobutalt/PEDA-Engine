@@ -1167,4 +1167,3 @@ case 'Note Delay':
 		}
 		return options[num] == null || options[num].length < 1;
 	}
-}
