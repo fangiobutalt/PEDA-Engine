@@ -939,7 +939,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Esconder HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
 
-					case 'Modo 1mb Ram':
+					case 'Hitsounds':
 						ClientPrefs.hitSounds = !ClientPrefs.hitSounds;
 
 					case 'Custom Scroll Speed':
