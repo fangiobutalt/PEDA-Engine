@@ -24,7 +24,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
-import flixel.system.FlxSound;
 import Controls;
 
 using StringTools;
@@ -754,7 +753,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Esconder a Barra de Tempo',
 		'Luzes Piscantes omg',
 		'Camera Zooms',
-		'Contador de FPS'
+		'Contador de FPS',
+		'Hitsounds'
 
 	];
 
@@ -911,7 +911,6 @@ class PreferencesSubstate extends MusicBeatSubstate
 							}
 						}
 						OptionsState.menuBG.antialiasing = ClientPrefs.globalAntialiasing;
-					
 
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
@@ -939,6 +938,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 					case 'Esconder HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
+
+					case 'Modo 1mb Ram':
+						ClientPrefs.hitSounds = !ClientPrefs.hitSounds;
 
 					case 'Custom Scroll Speed':
 						ClientPrefs.scroll = !ClientPrefs.scroll;
@@ -979,7 +981,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						ClientPrefs.noteSize += add/20;
 						if(ClientPrefs.noteSize < 0.5) ClientPrefs.noteSize = 0.5;
 						else if(ClientPrefs.noteSize > 1.5) ClientPrefs.noteSize = 1.5;
-case 'Note Delay':
+
+					case 'Note Delay':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
 							mult = 2;
@@ -1057,6 +1060,8 @@ case 'Note Delay':
 				daText = "Deixa teu HUD limpim.";
 			case 'Esconder Barra de Tempo':
 				daText = "Se checado não aparece a barra de tempo";
+			case 'Modo 1mb Ram':
+				daText = "Se checado o jogo vai ficar\nSuper Otimizado";
 		}
 		descText.text = daText;
 
@@ -1150,7 +1155,6 @@ case 'Note Delay':
 					case 'Scroll Speed':
 						daText = ClientPrefs.speed+"";
 				}
-			}
 				var lastTracker:FlxSprite = text.sprTracker;
 				text.sprTracker = null;
 				text.changeText(daText);
@@ -1167,3 +1171,4 @@ case 'Note Delay':
 		}
 		return options[num] == null || options[num].length < 1;
 	}
+}
