@@ -22,7 +22,7 @@ class MemoryCounter extends TextField
 		x = inX;
 		y = inY;
 		selectable = false;
-		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf").vcr, 14, 0xffffff);
+		defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/vcr.ttf"), 16, 0xffffff);
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 		width = 150;
