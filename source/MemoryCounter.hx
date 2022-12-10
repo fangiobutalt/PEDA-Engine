@@ -15,18 +15,18 @@ class MemoryCounter extends TextField
 	private var times:Array<Float>;
 	private var memPeak:Float = 0;
 
-	public function new(inX:Float = 10.0, inY:Float = 70.0, inCol:Int = 0xffffff) 
+	public function new(inX:Float = 10.0, inY:Float = 50.0, inCol:Int = 0xffffff) 
 	{
 		super();
 
 		x = inX;
 		y = inY;
 		selectable = false;
-		defaultTextFormat = new TextFormat("assets/fonts/vcr.ttf"), 12, inCol);
+		defaultTextFormat = new TextFormat("vcr", 12, inCol);
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
-		width = 150;
-		height = 90;
+		width = 170;
+		height = 70;
 	}
 
 	private function onEnter(_)
@@ -36,7 +36,7 @@ class MemoryCounter extends TextField
 
 		if (ClientPrefs.showFPS)
 		{	
-			text = mem + "MB / " + memPeak + " MB";	
+			text = mem + " MB / " + memPeak + " MB";	
 		}
 	}
 } 
