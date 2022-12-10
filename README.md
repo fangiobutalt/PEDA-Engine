@@ -14,6 +14,7 @@ restaurando ela aos poucos
 
 • Meliante - Artista Secundário
 
+• MateusX02 - Coder secundário e ajudante
 Aviso: essa engine está em cima da Psych. Créditos aos criadores originais
 _____________________________________
 
