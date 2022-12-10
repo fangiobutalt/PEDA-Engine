@@ -1,5 +1,5 @@
 # Friday Night Funkin' - PEDA Engine
-Engine pros mobile melhor que a BS
+Provavelmente, a Melhor Engine Mobile até agora!
 ## Instalação:
 É....
 Instala pelo source mesmo
@@ -7,9 +7,13 @@ A versão ainda está em fase de teste e estamos
 restaurando ela aos poucos
 ## Créditos:
 • DreamStreamGT - Artista da Engine
-• Fang - Coverista, Coder, "Artista", Dono,
+
+• Fang - Coverista, Coder, "Artista", Dono
+
 • San - Recortador de sprites
+
 • Meliante - Artista Secundário
+
 Aviso: essa engine está em cima da Psych. Créditos aos criadores originais
 _____________________________________
 
