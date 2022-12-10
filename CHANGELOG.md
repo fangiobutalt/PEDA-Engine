@@ -4,6 +4,25 @@ All notable changes will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.0 devbuild RESTORED] - 2022-12-10
+### Mudanças
+- Textos de score
+- Ratings
+- Barra de pontos
+- Widescreen (Beta)
+- Personagens Animados (restaurados)
+- Framerate agora entre 1000 e 0
+- Alguns textos
+
+
+### Removido
+- HitSounds
+- Modo 1gb RAM
+
+### Consertos
+- Jogo Crashando em alguma música
+- Alguns textos
+
 ## [4.7 devbuild] - 2022-30-03
 ### Mudanças
 - UI assets
@@ -17,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - HitSounds
 - Novo UI de combos
 - Novas Fontes
-- Confronting Yourself cover por Neném
+- Confronting Yourself cover por Newn
 
 ### Consertos
 - Opçoes
