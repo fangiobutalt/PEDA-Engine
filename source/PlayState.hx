@@ -69,8 +69,8 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['Tu é Lixo! (Redacted)', 0.2], //From 0% to 19%
-		['Merda (FF-)', 0.4], //From 20% to 39%
+		['Tu é uma Merda (Redacted)', 0.2], //From 0% to 19%
+		['Merda (F)', 0.4], //From 20% to 39%
 		['Ruim (F-)', 0.5], //From 40% to 49%
 		['Bruh (D-)', 0.6], //From 50% to 59%
 		['Mais ou menos (D+)', 0.69], //From 60% to 68%
@@ -1986,9 +1986,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingString == 'N/A') {
-			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Precisão: ' + ratingString;
+			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString;
 		} else {
-			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Precisão: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
+			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
 		}
 
 		if(cpuControlled) {
