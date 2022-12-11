@@ -69,16 +69,16 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['Tu é uma Merda (Redacted)', 0.2], //From 0% to 19%
-		['Merda (F)', 0.4], //From 20% to 39%
-		['Ruim (F-)', 0.5], //From 40% to 49%
-		['Bruh (D-)', 0.6], //From 50% to 59%
-		['Mais ou menos (D+)', 0.69], //From 60% to 68%
-		['Nice (C-)', 0.7], //69%
-		['Boa (C+)', 0.8], //From 70% to 79%
-		['Excelente (A+)', 0.80], //From 80% to 89%
-		['Foda! (S)', 0.9], //From 90% to 99%
-		['Perfeito!! (S+)', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['Redacted', 0.2], //From 0% to 19%
+		['F', 0.4], //From 20% to 39%
+		['F-', 0.5], //From 40% to 49%
+		['D-', 0.6], //From 50% to 59%
+		['D', 0.69], //From 60% to 68%
+		['C', 0.7], //69%
+		['B', 0.8], //From 70% to 79%
+		['A', 0.80], //From 80% to 89%
+		['S', 0.9], //From 90% to 99%
+		['S+', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	
 	#if (haxe >= "4.0.0")
@@ -395,7 +395,10 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
-
+			case 'cysBG': //extras
+				var bg:BGSprite = new BGSprite('cysBG', -600, -200, 0.9, 0.9);
+				add(bg);
+		}
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
