@@ -69,9 +69,9 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['Redacted', 0.2], //From 0% to 19%
-		['F', 0.4], //From 20% to 39%
-		['F-', 0.5], //From 40% to 49%
+		['E', 0.2], //From 0% to 19%
+		['F-', 0.4], //From 20% to 39%
+		['F', 0.5], //From 40% to 49%
 		['D-', 0.6], //From 50% to 59%
 		['D', 0.69], //From 60% to 68%
 		['C', 0.7], //69%
@@ -395,10 +395,7 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
-			case 'cysBG': //extras
-				var bg:BGSprite = new BGSprite('cysBG', -600, -200, 0.9, 0.9);
-				add(bg);
-		}
+
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
 					halloweenBG = new BGSprite('halloween_bg', -200, -100, ['halloweem bg0', 'halloweem bg lightning strike']);
