@@ -15,7 +15,7 @@ class MemoryCounter extends TextField
 	private var times:Array<Float>;
 	private var memPeak:Float = 0;
 
-	public function new(inX:Float = 10.0, inY:Float = 100.0, inCol:Int = 0xffffff) 
+	public function new(inX:Float = 10.0, inY:Float = 180.0, inCol:Int = 0xffffff) 
 	{
 		super();
 
