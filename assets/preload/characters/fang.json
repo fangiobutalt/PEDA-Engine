@@ -1,111 +1,78 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
-				-5,
+				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "idle",
-			"indices": [],
-			"name": "BF idle dance"
+			"fps": 12,
+			"name": "fang idle",
+			"indices": []
 		},
 		{
+			"loop": false,
+			"offsets": [
+				0,
+				-9
+			],
+			"anim": "singDOWN",
+			"fps": 12,
+			"name": "fang down",
+			"indices": []
+		},
+		{
+			"loop": false,
 			"offsets": [
 				-3,
-				-6
+				-10
 			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singLEFT",
-			"indices": [],
-			"name": "BF NOTE LEFT0"
-		},
-		{
-			"offsets": [
-				-59,
-				-50
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "singDOWN",
-			"indices": [],
-			"name": "BF NOTE DOWN0"
-		},
-		{
-			"offsets": [
-				-65,
-				15
-			],
-			"loop": false,
-			"fps": 24,
 			"anim": "singUP",
-			"indices": [],
-			"name": "BF NOTE UP0"
+			"fps": 12,
+			"name": "fang up",
+			"indices": []
 		},
 		{
-			"offsets": [
-				-67,
-				7
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				1,
+				-12
+			],
+			"anim": "singLEFT",
+			"fps": 12,
+			"name": "fang left",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-9
+			],
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "BF NOTE RIGHT0"
-		},
-		{
-			"offsets": [
-				37,
-				11
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "firstDeath",
-			"indices": [],
-			"name": "BF dies"
-		},
-		{
-			"offsets": [
-				37,
-				5
-			],
-			"loop": true,
-			"fps": 24,
-			"anim": "deathLoop",
-			"indices": [],
-			"name": "BF Dead Loop"
-		},
-		{
-			"offsets": [
-				37,
-				69
-			],
-			"loop": false,
-			"fps": 24,
-			"anim": "deathConfirm",
-			"indices": [],
-			"name": "BF Dead confirm"
+			"fps": 12,
+			"name": "fang right",
+			"indices": []
 		}
 	],
 	"no_antialiasing": false,
 	"image": "characters/fang",
 	"position": [
 		0,
-		310
+		-210
 	],
 	"healthicon": "fang",
-	"flip_x": true,
+	"flip_x": false,
 	"healthbar_colors": [
-		140,
-		175,
-		209
+		0,
+		152,
+		255
 	],
 	"camera_position": [
 		0,
 		0
 	],
-	"sing_duration": 4,
+	"sing_duration": 6.1,
 	"scale": 1
 }
