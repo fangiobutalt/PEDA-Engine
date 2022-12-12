@@ -1,5 +1,6 @@
 bf
 bf-blue
+fangio
 fang
 dad
 gf
@@ -11,7 +12,9 @@ bf-car
 gf-car
 parents-christmas
 monster-christmas
+pico-christmas
 bf-christmas
+bf-scared
 gf-christmas
 monster
 bf-pixel
