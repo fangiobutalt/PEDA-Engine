@@ -15,14 +15,14 @@ class MemoryCounter extends TextField
 	private var times:Array<Float>;
 	private var memPeak:Float = 10;
 
-	public function new(inX:Float = 10.0, inY:Float = 180.0, inCol:Int = 0xffffff) 
+	public function new(inX:Float = 10.0, inY:Float = 250.0, inCol:Int = 0xffffff) 
 	{
 		super();
 
 		x = inX;
 		y = inY;
 		selectable = false;
-		defaultTextFormat = new TextFormat("_sans", 14, inCol);
+		defaultTextFormat = new TextFormat("_sans", 13, inCol);
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 		width = 190;
