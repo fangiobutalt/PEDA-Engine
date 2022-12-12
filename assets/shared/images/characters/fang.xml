@@ -1,49 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TextureAtlas imagePath="BOYFRIEND.png">
-	<!-- Created by Fang -->
-	<SubTexture name="BF HEY!!0000" x="0" y="0" width="395" height="417" frameX="0" frameY="0" frameWidth="415" frameHeight="419"/>
-
-	<SubTexture name="BF NOTE DOWN0000" x="298" y="2" width="292" height="425" frameX="-1" frameY="-5" frameWidth="378" frameHeight="393"/>
-	<SubTexture name="BF NOTE DOWN0001" x="298" y="2" width="292" height="425" frameX="-1" frameY="-5" frameWidth="378" frameHeight="393"/>
-	<SubTexture name="BF NOTE DOWN0002" x="298" y="2" width="292" height="425" frameX="0" frameY="0" frameWidth="378" frameHeight="362"/>
-	<SubTexture name="BF NOTE DOWN0003" x="594" y="2" width="292" height="382" frameX="0" frameY="0" frameWidth="378" frameHeight="362"/>
-	<SubTexture name="BF NOTE DOWN0004" x="594" y="2" width="292" height="382" frameX="0" frameY="0" frameWidth="378" frameHeight="362"/>
-	<SubTexture name="BF NOTE DOWN0005" x="594" y="2" width="292" height="382" frameX="0" frameY="0" frameWidth="378" frameHeight="362"/>
-
-	<SubTexture name="BF NOTE LEFT0000" x="298" y="892" width="292" height="428" frameX="0" frameY="0" frameWidth="385" frameHeight="406"/>
-	<SubTexture name="BF NOTE LEFT0001" x="298" y="892" width="292" height="428" frameX="0" frameY="0" frameWidth="385" frameHeight="406"/>
-	<SubTexture name="BF NOTE LEFT0002" x="298" y="892" width="292" height="428" frameX="-11" frameY="-1" frameWidth="385" frameHeight="406"/>
-	<SubTexture name="BF NOTE LEFT0003" x="594" y="892" width="292" height="428" frameX="-11" frameY="-1" frameWidth="385" frameHeight="406"/>
-	<SubTexture name="BF NOTE LEFT0004" x="594" y="892" width="292" height="428" frameX="-11" frameY="-1" frameWidth="385" frameHeight="406"/>
-	<SubTexture name="BF NOTE LEFT0005" x="594" y="892" width="292" height="428" frameX="-11" frameY="-1" frameWidth="385" frameHeight="406"/>
-
-	<SubTexture name="BF NOTE RIGHT0000" x="890" y="892" width="267" height="444" frameX="-1" frameY="-2" frameWidth="409" frameHeight="436"/>
-	<SubTexture name="BF NOTE RIGHT0001" x="890" y="892" width="267" height="444" frameX="-1" frameY="-2" frameWidth="409" frameHeight="436"/>
-	<SubTexture name="BF NOTE RIGHT0002" x="890" y="892" width="267" height="444" frameX="0" frameY="0" frameWidth="409" frameHeight="408"/>
-	<SubTexture name="BF NOTE RIGHT0003" x="1288" y="2" width="267" height="444" frameX="0" frameY="0" frameWidth="409" frameHeight="408"/>
-	<SubTexture name="BF NOTE RIGHT0004" x="1288" y="2" width="267" height="444" frameX="0" frameY="0" frameWidth="409" frameHeight="408"/>
-	<SubTexture name="BF NOTE RIGHT0005" x="1288" y="2" width="267" height="444" frameX="0" frameY="0" frameWidth="409" frameHeight="408"/>
-
-	<SubTexture name="BF NOTE UP0000" x="1186" y="450" width="288" height="444" frameX="-5" frameY="0" frameWidth="378" frameHeight="446"/>
-	<SubTexture name="BF NOTE UP0001" x="1186" y="450" width="288" height="444" frameX="-5" frameY="0" frameWidth="378" frameHeight="446"/>
-	<SubTexture name="BF NOTE UP0002" x="1186" y="450" width="288" height="444" frameX="0" frameY="-5" frameWidth="376" frameHeight="446"/>
-	<SubTexture name="BF NOTE UP0003" x="1161" y="898" width="376" height="441" frameX="0" frameY="-5" frameWidth="376" frameHeight="446"/>
-	<SubTexture name="BF NOTE UP0004" x="1161" y="898" width="376" height="441" frameX="0" frameY="-5" frameWidth="376" frameHeight="446"/>
-	<SubTexture name="BF NOTE UP0005" x="1161" y="898" width="376" height="441" frameX="0" frameY="-5" frameWidth="376" frameHeight="446"/>
-
-	<SubTexture name="BF idle dance0000" x="2" y="892" width="292" height="441" frameX="-1" frameY="-20" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0001" x="2" y="892" width="292" height="441" frameX="-1" frameY="-20" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0002" x="890" y="447" width="292" height="441" frameX="0" frameY="-19" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0003" x="890" y="447" width="292" height="441" frameX="0" frameY="-19" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0004" x="594" y="444" width="292" height="441" frameX="-3" frameY="-14" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0005" x="594" y="444" width="292" height="441" frameX="-3" frameY="-14" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0006" x="813" y="1727" width="292" height="441" frameX="-1" frameY="-1" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0007" x="298" y="447" width="292" height="441" frameX="-1" frameY="-1" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0008" x="298" y="447" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0009" x="2" y="447" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0010" x="2" y="447" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0011" x="958" y="1" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0012" x="958" y="1" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-	<SubTexture name="BF idle dance0013" x="958" y="1" width="292" height="441" frameX="-2" frameY="0" frameWidth="411" frameHeight="413"/>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+made by Drim https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ
+-->
+<TextureAtlas imagePath="Fang.png" width="2388" height="1941">
+  <SubTexture name="fang idle0004" x="0" y="0"  width="442" height="964" frameX="-18" frameY="-42" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang idle0001" x="0" y="964"  width="438" height="961" frameX="-22" frameY="-43" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang idle0003" x="438" y="964"  width="420" height="962" frameX="-23" frameY="-43" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang idle0002" x="442" y="0"  width="421" height="956" frameX="-26" frameY="-48" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang up0001" x="858" y="956"  width="382" height="985" frameX="-28" frameY="-10" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang up0002" x="1240" y="0"  width="381" height="977" frameX="-29" frameY="-18" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang right0001" x="1240" y="977"  width="386" height="964" frameX="-51" frameY="-31" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang right0002" x="1621" y="0"  width="384" height="963" frameX="-50" frameY="-32" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang down0001" x="1626" y="963"  width="394" height="934" frameX="-25" frameY="-62" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang down0002" x="2005" y="0"  width="383" height="942" frameX="-26" frameY="-53" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang left0001" x="863" y="0"  width="375" height="952" frameX="-18" frameY="-43" frameWidth="500" frameHeight="1010"/>
+  <SubTexture name="fang left0002" x="2020" y="942"  width="367" height="951" frameX="-28" frameY="-44" frameWidth="500" frameHeight="1010"/>
 </TextureAtlas>
