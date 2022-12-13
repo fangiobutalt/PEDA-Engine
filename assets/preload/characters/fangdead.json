@@ -1,44 +1,44 @@
 {
 	"animations": [
 		{
+			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": false,
-			"fps": 24,
 			"anim": "firstDeath",
-			"indices": [],
-			"name": "dead"
-		},
-		{
-			"offsets": [
-				0,
-				0
-			],
-			"loop": true,
 			"fps": 24,
-			"anim": "deathLoop",
-			"indices": [],
-			"name": "deathloop"
+			"name": "dead",
+			"indices": []
 		},
 		{
-			"offsets": [
-				0,
-				0
-			],
 			"loop": false,
-			"fps": 24,
+			"offsets": [
+				0,
+				0
+			],
 			"anim": "deathConfirm",
+			"fps": 24,
+			"name": "dead",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
 			"indices": [],
-			"name": "dead"
+			"fps": 10,
+			"anim": "deathLoop",
+			"loop": true,
+			"name": "deathloop"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/fang",
+	"image": "characters/FangDeath",
 	"position": [
 		0,
-		-210
+		-340
 	],
 	"healthicon": "fang",
 	"flip_x": false,
