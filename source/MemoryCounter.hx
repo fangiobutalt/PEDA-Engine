@@ -36,7 +36,7 @@ class MemoryCounter extends TextField
 
 		if (ClientPrefs.showFPS)
 		{	
-			text = \nmem + " MB / " + memPeak + " MB";	
+			text = mem + " MB / " + memPeak + " MB";	
 		}
 	}
 } 
