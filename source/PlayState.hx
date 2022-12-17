@@ -1983,7 +1983,7 @@ class PlayState extends MusicBeatState
 		if(ratingString == 'N/A') {
 			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + '%' + ' • Ranking: ' + ratingString;
 		} else {
-			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent '%' + ' • Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
+			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + '%' + ' • Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
 		}
 
 		if(cpuControlled) {
