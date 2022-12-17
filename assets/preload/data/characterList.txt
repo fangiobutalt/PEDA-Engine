@@ -2,6 +2,7 @@ bf
 bf-blue
 fangio
 fang
+fang-player
 dad
 gf
 spooky
