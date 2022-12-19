@@ -72,6 +72,7 @@ function onUpdate()
     
 end
 function opponentNoteHit()
+    setProperty('defaultCamZoom', 1.2);
     health = getProperty('health')
     if getProperty('health') > 0.3 then
         setProperty('health', health- 0.01);
@@ -83,4 +84,8 @@ function onCreate()
 	setPropertyFromClass('GameOverSubstate', 'deathSoundName', 'fnf_loss_sfx');
 	setPropertyFromClass('GameOverSubstate', 'loopSoundName', 'gameOver')
 	setPropertyFromClass('GameOverSubstate', 'endSoundName', 'gameOverEnd');
+end
+
+function goodNoteHit(id, direction, noteType, isSustainNote)
+        setProperty('defaultCamZoom', 0.8);
 end
