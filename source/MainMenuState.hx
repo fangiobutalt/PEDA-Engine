@@ -66,13 +66,6 @@ class MainMenuState extends MusicBeatState
 		bg.screenCenter();
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
-	
-		var faixa:FlxSprite = new FlxSprite().loadGraphic(Paths.image('faixa_menu'));
-		faixa.setGraphicSize(FlxG.width, FlxG.height);
-		faixa.updateHitbox();
-		faixa.screenCenter();
-		faixa.antialiasing = ClientPrefs.globalAntialiasing;
-		add(faixa);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -96,14 +89,13 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, 110 + (i * 100));
+			var menuItem:FlxSprite = new FlxSprite(0, (i * 130)  + offset);
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.angle = 7;
-			menuItem.setGraphicSize(Std.int(menuItem.width * 0.8));
+			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -115,7 +107,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollowPos, null, 1);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine -" + pedaEngineVersion, 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "PEDA Engine v" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -255,7 +247,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			
+			spr.screenCenter(X);
 		});
 	}
 
