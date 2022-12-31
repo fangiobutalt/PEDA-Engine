@@ -47,10 +47,11 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
 			['PEDA Engine Devs'],
-			['Fang',		    'fang',		    'Dev Principal e Coder',	 'https://youtube.com/c/Fang%E3%83%84principal1',	'0xFFC30085'],
-			['San',		    'otario',		    'Dev Secundario e Recortador de Sprites',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'0xFFX0125'],
-			['DreamStreamGT',		    'dream',		    'Artista da Engine',	 'https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ'],
-			['Apenas um Meliante XD',		    'meliante',		    'Artista dos ícones em pixel',	 'https://youtu.be/3SntaCpt5PE'],
+			['Fang',		    'fang',		    'Dev Principal, Coder e Coverista',	 'https://youtube.com/@FangTheOnly'],
+			['San/Otario/sucker',		    'otario',		    'Infelizmente ele nao faz parte do time mais, R.I.P San 2022',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'A9CCE3'],
+			['DreamStreamGT',		    'dream',		    'Artista da Engine',	 'https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ',	'48C9B0'],
+			['Meliante (Um Meliante Qualquer)',		    'meliante',		    'Artista Secundario e Pixel',	 'https://youtu.be/3SntaCpt5PE',	'2ECC71'],
+			['MateusX02',		    'mateusx02',		    'Ajudante e Coder Secundario (esse cara me ajudou pra caramba)',	 'https://youtube.com/@MateusX02'],
 			[''],
 			['Psych Engine Android Port (gay)'],
 			['M.A. Jigsaw',		    'majigsaw',		    'Main Coder of The Port',	 'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ',	'0xFFC30085'],
