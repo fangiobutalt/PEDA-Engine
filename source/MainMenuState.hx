@@ -67,8 +67,8 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 	
-		var faixa:FlxSprite = new FlxSprite().loadGraphic(Paths.image('faixa_menu'));
-		faixa.setGraphicSize(FlxG.width, FlxG.height);
+		var faixa:FlxSprite = new FlxSprite(0).loadGraphic(Paths.image('faixa_menu'));
+		faixa.scrollFactor.set(0, 0);
 		faixa.updateHitbox();
 		faixa.screenCenter();
 		faixa.antialiasing = ClientPrefs.globalAntialiasing;
