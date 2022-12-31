@@ -47,7 +47,7 @@ class CreditsState extends MusicBeatState
 
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
 			['PEDA Engine Devs'],
-			['Fang',		    'fang',		    'Dev Principal, Coder e Coverista',	 'https://youtube.com/@FangTheOnly'],
+			['Fang',		    'fang',		    'Dev Principal, Coder, Coverista e Artista de Icons',	 'https://youtube.com/@FangTheOnly'],
 			['San/Otario/sucker',		    'otario',		    'Infelizmente ele nao faz parte do time mais, R.I.P San 2022',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'A9CCE3'],
 			['DreamStreamGT',		    'dream',		    'Artista da Engine',	 'https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ',	'48C9B0'],
 			['Meliante (Um Meliante Qualquer)',		    'meliante',		    'Artista Secundario e Pixel',	 'https://youtu.be/3SntaCpt5PE',	'2ECC71'],
