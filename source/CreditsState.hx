@@ -51,7 +51,7 @@ class CreditsState extends MusicBeatState
 			['San/Otario/sucker',		    'otario',		    'Infelizmente ele nao faz parte do time mais, R.I.P San 2022',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'0xFFA9CCE3'],
 			['DreamStreamGT',		    'dream',		    'Artista da Engine',	 'https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ',	'0xFF48C9B0'],
 			['Meliante (Um Meliante Qualquer)',		    'meliante',		    'Artista Secundario e Pixel',	 'https://youtu.be/3SntaCpt5PE',	'0xFF2ECC71'],
-			['MateusX02',		    'mateusx02',		    'Ajudante e Coder Secundario (esse cara me ajudou pra caramba)',	 'https://youtube.com/@MateusX02'),	   '0xFFFFFFFF'],
+			['MateusX02',		    'mateusx02',		    'Ajudante e Coder Secundario (esse cara me ajudou pra caramba)',	 'https://youtube.com/@MateusX02',	   '0xFFFFFFFF'],
 			[''],
 			['Psych Engine Android Port (gay)'],
 			['M.A. Jigsaw',		    'majigsaw',		    'Main Coder of The Port',	 'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ',	'0xFFC30085'],
