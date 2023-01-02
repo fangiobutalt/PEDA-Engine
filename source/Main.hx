@@ -83,7 +83,7 @@ class Main extends Sprite
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
 		
-		memoryCounter = new MemoryCounter(10, 12, 0xffffff);
+		memoryCounter = new MemoryCounter(10, 15, 0xffffff);
 		addChild(memoryCounter);
 		if(memoryCounter != null) {
 			memoryCounter.visible = ClientPrefs.showFPS;
