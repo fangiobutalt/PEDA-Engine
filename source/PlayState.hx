@@ -69,16 +69,16 @@ class PlayState extends MusicBeatState
 	public static var STRUM_X_MIDDLESCROLL = -278;
 
 	public static var ratingStuff:Array<Dynamic> = [
-		['Tu é Lixo! (Redacted)', 0.2], //From 0% to 19%
-		['Merda (FF-)', 0.4], //From 20% to 39%
-		['Ruim (F-)', 0.5], //From 40% to 49%
-		['Bruh (D-)', 0.6], //From 50% to 59%
-		['Mais ou menos (D+)', 0.69], //From 60% to 68%
-		['Nice (C-)', 0.7], //69%
-		['Boa (C+)', 0.8], //From 70% to 79%
-		['Excelente (A+)', 0.80], //From 80% to 89%
-		['Foda! (S)', 0.9], //From 90% to 99%
-		['Perfeito!! (SS+)', 1] //The value on this one isn't used actually, since Perfect is always "1"
+		['E', 0.2], //From 0% to 19%
+		['F-', 0.4], //From 20% to 39%
+		['F', 0.5], //From 40% to 49%
+		['D-', 0.6], //From 50% to 59%
+		['D', 0.69], //From 60% to 68%
+		['C', 0.7], //69%
+		['B', 0.8], //From 70% to 79%
+		['A', 0.80], //From 80% to 89%
+		['S', 0.9], //From 90% to 99%
+		['S+', 1] //The value on this one isn't used actually, since Perfect is always "1"
 	];
 	
 	#if (haxe >= "4.0.0")
@@ -226,6 +226,7 @@ class PlayState extends MusicBeatState
 	var timeTxt:FlxText;
 	var CreditText:FlxText;
 	var scoreTxtTween:FlxTween;
+	var versionName:FlxText;
 
 	public static var campaignScore:Int = 0;
 	public static var campaignMisses:Int = 0;
@@ -372,11 +373,6 @@ class PlayState extends MusicBeatState
 			case 'stage': //Week 1
 				var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
 				add(bg);
-
-				var stageFront:BGSprite = new BGSprite('stagefront', -650, 600, 0.9, 0.9);
-				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
-				stageFront.updateHitbox();
-				add(stageFront);
 
 				if(!ClientPrefs.lowQuality) {
 					var stageLight:BGSprite = new BGSprite('stage_light', -125, -100, 0.9, 0.9);
@@ -903,14 +899,19 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
-		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "Olá eu tenho Problemas em Habilidade", 32);
-		botplayTxt.setFormat(Paths.font("impact.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionName = new FlxText(0, FlxG.height - 24, 0, SONG.song + " - " + CoolUtil.difficultyString() + " | Peda Engine: v" + MainMenuState.pedaEngineVersion, 16);
+			versionName.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			versionName.scrollFactor.set();
+			add(versionName);
+
+		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "[ AUTOPLAY ]", 32);
+		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
@@ -927,6 +928,7 @@ class PlayState extends MusicBeatState
 		iconP1.cameras = [camHUD];
 		iconP2.cameras = [camHUD];
 		scoreTxt.cameras = [camHUD];
+		versionName.cameras = [camOther];
 		botplayTxt.cameras = [camHUD];
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
@@ -1978,10 +1980,10 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		if(ratingString == '? (N/A)') {
-			scoreTxt.text = 'Pontos: ' + songScore + ' // Erros: ' + songMisses + ' // Vida: ' + healthBar.percent + ' // Precisão: ' + ratingString;
+		if(ratingString == 'N/A') {
+			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString;
 		} else {
-			scoreTxt.text = 'Pontos: ' + songScore + ' // Erros: ' + songMisses + ' // Vida: ' + healthBar.percent + ' // Precisão: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
+			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
 		}
 
 		if(cpuControlled) {
@@ -2299,12 +2301,12 @@ class PlayState extends MusicBeatState
 					callOnLuas('opponentNoteHit', [notes.members.indexOf(daNote), Math.abs(daNote.noteData), daNote.noteType, daNote.isSustainNote]);
 
 					if (!daNote.isSustainNote)
-					{
-						daNote.kill();
-						notes.remove(daNote, true);
-						daNote.destroy();
-					}
+				{
+					daNote.kill();
+					notes.remove(daNote, true);
+					daNote.destroy();
 				}
+			}
 
 				if(daNote.mustPress && cpuControlled) {
 					if(daNote.isSustainNote) {
