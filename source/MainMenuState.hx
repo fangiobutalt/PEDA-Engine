@@ -37,9 +37,9 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-    private var char1:Character = null;
-	private var char2:Character = null;
-	private var char3:Character = null;
+    private var showshowChar1:Character = null;
+	private var showshowChar2:Character = null;
+	private var showshowChar3:Character = null;
 
 	override function create()
 	{
@@ -117,20 +117,20 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-     char1 = new Character(800, -130, 'bf', true);
-        char1.setGraphicSize(Std.int(char1.width * 1));
-        add (char1);
-        char1.visible = false;
+     showChar1 = new Character(800, -130, 'bf', true);
+        showChar1.setGraphicSize(Std.int(showChar1.width * 1));
+        add(showChar1);
+        showChar1.visible = false;
         
-        char2 = new Character(800, -100, 'gf', true);
-        char2.setGraphicSize(Std.int(char2.width * 0.9));
-        add (char2);
-        char2.visible = false;
+        showChar2 = new Character(800, -100, 'gf', true);
+        showChar2.setGraphicSize(Std.int(showChar2.width * 0.9));
+        add(showChar2);
+        showChar2.visible = false;
         
-        char3 = new Character(800, -90, 'pico', true);
-        char3.setGraphicSize(Std.int(char3.width * 0.9));
-        add (char3);
-        char3.visible = false;
+        showChar3 = new Character(800, -90, 'pico', true);
+        showChar3.setGraphicSize(Std.int(showChar3.width * 0.9));
+        add(showChar3);
+        showChar3.visible = false;
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine - V" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -196,39 +196,39 @@ class MainMenuState extends MusicBeatState
         changeItem(-1);
         changeItem(1);
         
-        char1.dance();
-        char1.updateHitbox();
-        char1.visible = true;
+        showChar1.dance();
+        showChar1.updateHitbox();
+        showChar1.visible = true;
     }
     else
     {
-        char1.visible = false;
+        showChar1.visible = false;
     }
     if (optionShit[curSelected] == 'freeplay')
     {
         changeItem(-1);
         changeItem(1);
         
-        char2.dance();
-        char2.updateHitbox();
-        char2.visible = true;
+        showChar2.dance();
+        showChar2.updateHitbox();
+        showChar2.visible = true;
     }
     else
     {
-        char2.visible = false;
+        showChar2.visible = false;
     }
     if (optionShit[curSelected] == 'options')
     {
         changeItem(-1);
         changeItem(1);
         
-        char3.dance();
-        char3.updateHitbox();
-        char3.visible = true;
+        showChar3.dance();
+        showChar3.updateHitbox();
+        showChar3.visible = true;
     }
     else
     {
-        char3.visible = false;
+        showChar3.visible = false;
     }
 
 		if (!selectedSomethin)
