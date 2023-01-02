@@ -120,17 +120,17 @@ class MainMenuState extends MusicBeatState
 		char1 = new Character(800, -130, 'bf', true);
         char1.setGraphicSize(Std.int(char1.width * 0.8));
         add (char1);
-        char1.visible = false
+        char1.visible = false;
         
         char2 = new Character(800, -130, 'gf', true);
         char2.setGraphicSize(Std.int(char2.width * 0.8));
         add (char2);
-        char2.visible = false
+        char2.visible = false;
         
         char3 = new Character(800, -130, 'pico', true);
         char3.setGraphicSize(Std.int(char3.width * 0.8));
         add (char3);
-        char3.visible = false
+        char3.visible = false;
 
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine - V" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -203,7 +203,7 @@ class MainMenuState extends MusicBeatState
     }
     else
     {
-        char1.visible = false
+        char1.visible = false;
     }
     if (optionShit[curSelected] == freeplay)
     {
@@ -216,7 +216,7 @@ class MainMenuState extends MusicBeatState
     }
     else
     {
-        char2.visible = false
+        char2.visible = false;
     }
     if (optionShit[curSelected] == options)
     {
@@ -229,7 +229,7 @@ class MainMenuState extends MusicBeatState
     }
     else
     {
-        char3.visible = false
+        char3.visible = false;
     }
 		if (!selectedSomethin)
 		{
