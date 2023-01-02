@@ -184,7 +184,7 @@ class PlayState extends MusicBeatState
 	public var camOther:FlxCamera;
 	public var cameraSpeed:Float = 1;
 
-	var dialogue:Array<String> = ['eu dei o cu', 'coloca o texto aqui uwu'];
+	var dialogue:Array<String> = ['eu dou a bunda pra varios homens no matagal', 'coloca o texto aqui uwu'];
 	var dialogueJson:DialogueFile = null;
 
 	var halloweenBG:BGSprite;
@@ -899,7 +899,7 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 17, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
@@ -1981,9 +1981,9 @@ class PlayState extends MusicBeatState
 		super.update(elapsed);
 
 		if(ratingString == 'N/A') {
-			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString;
+			scoreTxt.text = 'Pontos: ' + songScore + ' // Erros: ' + songMisses + ' // Vida: ' + healthBar.percent + '%' + ' // Ranking: ' + ratingString;
 		} else {
-			scoreTxt.text = 'Pontos: ' + songScore + ' • Erros: ' + songMisses + ' • Vida: ' + healthBar.percent + ' • Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
+			scoreTxt.text = 'Pontos: ' + songScore + ' // Erros: ' + songMisses + ' // Vida: ' + healthBar.percent + '%' + ' // Ranking: ' + ratingString + ' ' + Math.floor(ratingPercent * 100) + '%';
 		}
 
 		if(cpuControlled) {
