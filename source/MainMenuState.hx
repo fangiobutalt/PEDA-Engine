@@ -37,9 +37,9 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-	private var char1 Character = null;
-	private var char2 Character = null;
-	private var char3 Character = null;
+	private var char1:Character = null;
+	private var char2:Character = null;
+	private var char3:Character = null;
 
 	override function create()
 	{
@@ -205,7 +205,32 @@ class MainMenuState extends MusicBeatState
     {
         char1.visible = false
     }
-    
+    if (optionShit[curSelected] == freeplay)
+    {
+        changeItem(-1);
+        changeItem(1);
+        
+        char2.dance();
+        char2.updateHitbox();
+        char2.visible = true;
+    }
+    else
+    {
+        char2.visible = false
+    }
+    if (optionShit[curSelected] == options)
+    {
+        changeItem(-1);
+        changeItem(1);
+        
+        char3.dance();
+        char3.updateHitbox();
+        char3.visible = true;
+    }
+    else
+    {
+        char3.visible = false
+    }
 		if (!selectedSomethin)
 		{
 			if (controls.UI_UP_P)
