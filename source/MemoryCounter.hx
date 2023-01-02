@@ -22,7 +22,7 @@ class MemoryCounter extends TextField
 		x = inX;
 		y = inY;
 		selectable = false;
-		defaultTextFormat = new TextFormat("vcr.ttf", 14, inCol);
+		defaultTextFormat = new TextFormat('vcr.ttf', 14, inCol);
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 		width = 190;
