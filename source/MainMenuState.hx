@@ -37,7 +37,7 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-	private var char1:Character = null;
+    private var char1:Character = null;
 	private var char2:Character = null;
 	private var char3:Character = null;
 
@@ -70,8 +70,8 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 	
-		var faixa:FlxSprite = new FlxSprite().loadGraphic(Paths.image('faixa_menu'));
-		faixa.setGraphicSize(FlxG.width, FlxG.height);
+		var faixa:FlxSprite = new FlxSprite(0).loadGraphic(Paths.image('faixa_menu'));
+		faixa.scrollFactor.set(0, 0);
 		faixa.updateHitbox();
 		faixa.screenCenter();
 		faixa.antialiasing = ClientPrefs.globalAntialiasing;
@@ -117,18 +117,18 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-		char1 = new Character(800, -130, 'bf', true);
-        char1.setGraphicSize(Std.int(char1.width * 0.8));
+     char1 = new Character(800, -130, 'bf', true);
+        char1.setGraphicSize(Std.int(char1.width * 1));
         add (char1);
         char1.visible = false;
         
-        char2 = new Character(800, -130, 'gf', true);
-        char2.setGraphicSize(Std.int(char2.width * 0.8));
+        char2 = new Character(800, -100, 'gf', true);
+        char2.setGraphicSize(Std.int(char2.width * 0.9));
         add (char2);
         char2.visible = false;
         
-        char3 = new Character(800, -130, 'pico', true);
-        char3.setGraphicSize(Std.int(char3.width * 0.8));
+        char3 = new Character(800, -90, 'pico', true);
+        char3.setGraphicSize(Std.int(char3.width * 0.9));
         add (char3);
         char3.visible = false;
 
@@ -190,8 +190,7 @@ class MainMenuState extends MusicBeatState
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
-
-
+	
     if (optionShit[curSelected] == 'story_mode')
     {
         changeItem(-1);
@@ -231,6 +230,7 @@ class MainMenuState extends MusicBeatState
     {
         char3.visible = false;
     }
+
 		if (!selectedSomethin)
 		{
 			if (controls.UI_UP_P)
