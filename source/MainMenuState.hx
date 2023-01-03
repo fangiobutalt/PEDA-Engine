@@ -25,21 +25,19 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
-	public static var pedaEngineVersion:String = '0.5.1 (Restored Build)';
+	public static var pedaEngineVersion:String = '0.5.1 (inDev Build)';
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
-	
+    private var showPico:FlxSprite;
+    
 	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
-    private var showChar1:Character = null;
-	private var showChar2:Character = null;
-	private var showChar3:Character = null;
 
 	override function create()
 	{
@@ -117,26 +115,11 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showChar1 = new Character(800, -130, 'bf', true);
-		showChar1.setGraphicSize(Std.int(showChar1.width * 0.9));
-		add(showChar1);
+        showPico = new FlxSprite(200, 50).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
+		add(showPico);
 
-		showChar1.visible = false;
-
-        showChar2 = new Character(800, -100, 'gf', true);
-        showChar2.setGraphicSize(Std.int(showChar2.width * 0.9));
-        add(showChar2);
-        
-        showChar2.visible = false;
-        
-        showChar3 = new Character(800, -50, 'pico', true);
-        showChar3.setGraphicSize(Std.int(showChar3.width * 0.9));
-        add(showChar3);
-        
-        showChar3.visible = false;
-
-
-
+		showAwards.visible = false;
+		
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine - V" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -195,54 +178,22 @@ class MainMenuState extends MusicBeatState
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+		
+		if (optionShit[curSelected] == 'options')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showPico.updateHitbox();
+				showPico.visible = true;	
+			}
+			
+			else
 	
-        if (optionShit[curSelected] == 'story_mode')
-        {
-            changeItem(-1);
-            changeItem(1);
-            showChar1.dance();
-            showChar1.updateHitbox();
-            showChar1.visible = true;
-        }
-        
-        else
-
-        {
-             showChar1.visible = false;
-        }
-
-
-		if (optionShit[curSelected] == 'freeplay')
-        {
-            changeItem(-1);
-            changeItem(1);
-            showChar2.dance();
-            showChar2.updateHitbox();
-            showChar2.visible = true;
-        }
-        
-        else
-
-        {
-             showChar2.visible = false;
-        }
-
-
-        if (optionShit[curSelected] == 'options')
-        {
-            changeItem(-1);
-            changeItem(1);
-            showChar3.dance();
-            showChar3.updateHitbox();
-            showChar3.visible = true;
-        }
-        
-        else
-
-        {
-             showChar3.visible = false;
-        }
-
+			{
+				showPico.visible = false;
+			}
+		
+		
 
 		if (!selectedSomethin)
 		{
