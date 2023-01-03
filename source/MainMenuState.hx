@@ -118,7 +118,7 @@ class MainMenuState extends MusicBeatState
         showPico = new FlxSprite(200, 50).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
 
-		showAwards.visible = false;
+		showPico.visible = false;
 		
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine - V" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
