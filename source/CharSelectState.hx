@@ -10,6 +10,8 @@ import flixel.util.FlxColor;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
+//Isso n funcionaKKKKKKKKKKKKKKK
+
 class CharSelectState extends MusicBeatState{
     var charsArray:Array<String> = ['BOYFRIEND', 'BF-CAR', 'BF-NEO', 'FANG'];
     var leBG:FlxSprite;
