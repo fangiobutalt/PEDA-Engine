@@ -14,17 +14,13 @@ end
 Fourth: done
 -------------------------------------------
 Em primeiro lugar
-Você precisa adicionar o script lua com a sentença:
-
-function onCreate()
-addLuaScript('data/scripts/urscript')
-end
+Você precisa adicionar o script lua na chart ou algo assim:
 
 Segundo:
-Coloque o script na pasta da música (chart)
+Coloque o script que você vai usar aqui
 
 Terceiro:
-Coloque isso no seu script
+Coloque isso no seu script que está na chart
 
 function onCreate()
 addLuaScript('data/scripts/urscript')
