@@ -33,6 +33,7 @@ class MainMenuState extends MusicBeatState
 	private var camAchievement:FlxCamera;
     private var showPico:FlxSprite;
     private var showBFs:FlxSprite;
+    private var showBFa:FlxSprite;
     
 	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
 
@@ -116,15 +117,20 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showPico = new FlxSprite(500, 250).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
+        showPico = new FlxSprite(500, 190).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
 
 		showPico.visible = false;
 		
-        showBFs = new FlxSprite(500, -50).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
+        showBFs = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
 		add(showBFs);
 
 		showBFs.visible = false;
+		
+        showBFa = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
+		add(showBFa);
+
+		showBFa.visible = false;
 		
 		var versionShit:FlxText = new FlxText(12, FlxG.height - 70, 0, "Peda Engine - V" + pedaEngineVersion, 12);
 		versionShit.scrollFactor.set();
@@ -212,6 +218,20 @@ class MainMenuState extends MusicBeatState
 	
 			{
 				showBFs.visible = false;
+			}
+			
+		if (optionShit[curSelected] == 'awards')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showBFa.updateHitbox();
+				showBFa.visible = true;	
+			}
+			
+			else
+	
+			{
+				showBFa.visible = false;
 			}
 			
 			
