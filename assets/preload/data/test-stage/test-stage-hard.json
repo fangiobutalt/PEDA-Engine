@@ -6696,7 +6696,7 @@
 		"player2": "bf-pixel-opponent",
 		"player3": "gf",
 		"song": "Test-Stage",
-		"needsVoices": false,
+		"needsVoices": true,
 		"validScore": true,
 		"bpm": 105,
 		"speed": 2.7
