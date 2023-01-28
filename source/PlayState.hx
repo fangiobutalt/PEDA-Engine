@@ -935,7 +935,7 @@ class PlayState extends MusicBeatState
 		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		combo.cameras = [camHUD];
-		daRating.cameras = [camHUD];
+		rating.cameras = [camHUD];
 
 		#if mobileC
 			mcontrols = new Mobilecontrols();
