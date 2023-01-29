@@ -34,6 +34,7 @@ class MainMenuState extends MusicBeatState
     private var showPico:FlxSprite;
     private var showBFs:FlxSprite;
     private var showBFa:FlxSprite;
+    private var showGFf:FlxSprite;
     
 	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
 
@@ -117,7 +118,11 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showPico = new FlxSprite(500, 190).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
+        showGFf = new FlxSprite(500, 270).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
+		add(showGFf);
+
+		FlxG.camera.follow(camFollowPos, null, 1);
+        showPico = new FlxSprite(500, 350).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
 
 		showPico.visible = false;
@@ -127,7 +132,7 @@ class MainMenuState extends MusicBeatState
 
 		showBFs.visible = false;
 		
-        showBFa = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
+        showBFa = new FlxSprite(-100, 150).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
 		add(showBFa);
 
 		showBFa.visible = false;
@@ -232,6 +237,20 @@ class MainMenuState extends MusicBeatState
 	
 			{
 				showBFa.visible = false;
+			}
+			
+					if (optionShit[curSelected] == 'freeplay')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showGFf.updateHitbox();
+				showGFf.visible = true;	
+			}
+			
+			else
+	
+			{
+				showGFf.visible = false;
 			}
 			
 			
