@@ -21,7 +21,6 @@ _____________________________________
 ## - Recursos e Melhorias -
 * Agora realmente a Engine está 100% traduzida
 * Otimização sem tirar a experiência original
-* WideScreen (Estado Beta ainda)
 * Icons Balançando
 * Engine 100% Accésivel
 * Músicas extras!
