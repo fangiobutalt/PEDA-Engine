@@ -121,7 +121,6 @@
 	<haxelib name="discord_rpc" if="desktop"/>
 	<haxelib name="actuate" />
 	<haxelib name="extension-webm"/>
-        <haxelib name="extension-kizzyrpc" if="android" />
 	
 		<architecture name="armv7" exclude="arm64" if="android" />
 	<architecture name="x86" if="android" />
