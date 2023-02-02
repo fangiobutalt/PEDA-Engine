@@ -1140,8 +1140,8 @@ class PlayState extends MusicBeatState
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
 		var luaFile:String = 'characters/' + name + '.lua';
-		if(FileSystem.exists(Paths.modFolders(luaFile))) {
-			luaFile = Paths.modFolders(luaFile);
+		if(FileSystem.exists(Paths.getPreloadPath(luaToLoad)) {
+			luaFile = Paths.mod(luaFile);
 			doPush = true;
 		} else {
 			luaFile = Paths.getPreloadPath(luaFile);
@@ -1154,7 +1154,7 @@ class PlayState extends MusicBeatState
 		{
 			for (lua in luaArray)
 			{
-				if(lua.scriptName == luaFile) return;
+				if(lua.name == luaFile) return;
 			}
 			luaArray.push(new FunkinLua(luaFile));
 		}
