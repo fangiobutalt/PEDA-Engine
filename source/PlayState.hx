@@ -252,14 +252,18 @@ class PlayState extends MusicBeatState
 	var mcontrols:Mobilecontrols; 
 	#end	
 
-	private var luaArray:Array<FunkinLua> = [];
+	//private var luaArray:Array<FunkinLua> = [];
 
 	//Achievement shit
 	var keysPressed:Array<Bool> = [false, false, false, false];
 	var boyfriendIdleTime:Float = 0.0;
 	var boyfriendIdled:Bool = false;
 
+    // Char Select
+	var charSelection:Int = CharSelectState.curSelected;
+
 	// Lua shit
+	public var luaArray:Array<FunkinLua> = [];
 	private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
 	public var introSoundsSuffix:String = '';
 
@@ -729,6 +733,19 @@ class PlayState extends MusicBeatState
 		boyfriend = new Boyfriend(0, 0, SONG.player1);
 		startCharacterPos(boyfriend);
 		boyfriendGroup.add(boyfriend);
+		
+				
+		switch(charSelection){
+		case 0:
+		boyfriend = new Boyfriend(0, 0, 'bf');
+		case 1:
+		boyfriend = new Boyfriend(0, 0, 'bf-car');
+		default:
+		boyfriend = new Boyfriend(0, 0, 'bf');
+		}
+		startCharacterPos(boyfriend);
+		boyfriendGroup.add(boyfriend);
+		startCharacterLua(boyfriend.curCharacter);
 		
 		var camPos:FlxPoint = new FlxPoint(gf.getGraphicMidpoint().x, gf.getGraphicMidpoint().y);
 		camPos.x += gf.cameraPosition[0];
