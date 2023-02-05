@@ -35,6 +35,7 @@ class MainMenuState extends MusicBeatState
     private var showBFs:FlxSprite;
     private var showBFa:FlxSprite;
     private var showGFf:FlxSprite;
+    private var showPicod:FlxSprite;
     
 	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
 
@@ -118,6 +119,10 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
+        showPicod = new FlxSprite(410, 280).loadGraphic(Paths.image('mainmenuchars/pico_dnt'));
+		add(showPicod);
+
+		FlxG.camera.follow(camFollowPos, null, 1);
         showGFf = new FlxSprite(410, 0).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
 		add(showGFf);
 
@@ -127,7 +132,7 @@ class MainMenuState extends MusicBeatState
 
 		showPico.visible = false;
 		
-        showBFs = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
+        showBFs = new FlxSprite(480, -120).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
 		add(showBFs);
 
 		showBFs.visible = false;
@@ -195,6 +200,20 @@ class MainMenuState extends MusicBeatState
 
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
+		
+		if (optionShit[curSelected] == 'donate')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showPicod.updateHitbox();
+				showPicod.visible = true;	
+			}
+			
+			else
+	
+			{
+				showPicod.visible = false;
+			}
 		
 		if (optionShit[curSelected] == 'options')
 			{
