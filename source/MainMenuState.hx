@@ -118,11 +118,11 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showGFf = new FlxSprite(500, 270).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
+        showGFf = new FlxSprite(410, 0).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
 		add(showGFf);
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showPico = new FlxSprite(500, 350).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
+        showPico = new FlxSprite(480, 510).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
 
 		showPico.visible = false;
@@ -132,7 +132,7 @@ class MainMenuState extends MusicBeatState
 
 		showBFs.visible = false;
 		
-        showBFa = new FlxSprite(-100, 150).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
+        showBFa = new FlxSprite(200, 120).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
 		add(showBFa);
 
 		showBFa.visible = false;
