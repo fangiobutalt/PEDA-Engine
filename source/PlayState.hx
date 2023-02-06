@@ -266,7 +266,7 @@ class PlayState extends MusicBeatState
 	override public function create()
 	{
 		
-		Main.dumpCache();
+		
 		
         #if MODS_ALLOWED
  		Paths.destroyLoadedImages(resetSpriteCache);
