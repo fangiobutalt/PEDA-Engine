@@ -75,7 +75,7 @@ class Main extends Sprite
 		#end
 
 		public static function dumpCache() // THIS MOD WASTES 1-2 FUCKING G I G A B Y T E S OF MEMORY SO OF COURSE I COPIED KADE'S CODE FOR FUCKS SAKE
-                {
+        {
             @:privateAccess
             for (key in FlxG.bitmap._cache.keys())
             {
@@ -93,7 +93,7 @@ class Main extends Sprite
             Assets.cache.clear("shared");
             Assets.cache.clear("preload");
             // */
-            }	
+        }
 		ClientPrefs.startControls();
 		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));
