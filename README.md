@@ -14,12 +14,13 @@ Pode ocorrer bugs
 
 • Meliante - Artista
 
-• MateusX02 - Coder secundário e ajudante (ou a pessoa que fez a engine não ir pro saco)
+• MateusX02 - Coder e ajudante (ou a pessoa que fez a engine não ir pro saco)
 
 • Vek - Artista
 
 • FloweyGG - Artista
 
+• FNF BR - Coder
 
 Aviso: essa engine está em cima da Psych. Créditos aos criadores originais
 _____________________________________
