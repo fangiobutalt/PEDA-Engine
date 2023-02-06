@@ -31,7 +31,7 @@ using StringTools;
 // TO DO: Redo the menu creation system for not being as dumb
 class OptionsState extends MusicBeatState
 {
-	var options:Array<String> = ['Notas', 'Controles do Tecradim', 'Controles Mobiles', 'Preferencias'];
+	var options:Array<String> = ['Setas', 'Controles do Teclado', 'Controles Mobiles', 'Preferencias'];
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private static var curSelected:Int = 0;
 	public static var menuBG:FlxSprite;		
@@ -98,9 +98,9 @@ class OptionsState extends MusicBeatState
                         _virtualpad.alpha = 0;
 
 			switch(options[curSelected]) {
-				case 'Notas':
+				case 'Setas':
 				 	openSubState(new NotesSubstate());
-				case 'Controles do Tecradim':                                        
+				case 'Controles do Teclado':                                        
 					openSubState(new ControlsSubstate());
 				case 'Controles Mobiles':
 					MusicBeatState.switchState(new options.CustomControlsState());					
@@ -727,9 +727,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 	];
 	static var noCheckbox:Array<String> = [
 		'Framerate',
-		'Note Delay',
+		'Delay das Setas',
 		'Scroll Speed',
-		'Tamanho da Nota'
+		'Tamanho das Setas'
 	];
 
 	static var options:Array<String> = [
@@ -744,14 +744,14 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Downscroll',
 		'Middlescroll',
 		'Ghost Tapping',
-		'Note Delay',
+		'Delay das Setas',
 		'Note Splashes',
-		'Tamanho da Nota',
-		'Custom Scroll Speed',
+		'Tamanho das Setas',
+		'Scroll Speed Customizado',
 		'Scroll Speed',
 		'Esconder HUD',
 		'Esconder a Barra de Tempo',
-		'Luzes Piscantes omg',
+		'Luzes Piscantes',
 		'Camera Zooms',
 		'Contador de FPS',
 		'Hitsounds'
@@ -915,7 +915,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Note Splashes':
 						ClientPrefs.noteSplashes = !ClientPrefs.noteSplashes;
 
-					case 'Luzes Piscantes omg':
+					case 'Luzes Piscantes':
 						ClientPrefs.flashing = !ClientPrefs.flashing;
 
 					case 'Violence':
@@ -939,10 +939,10 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Esconder HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
 
-					case 'Hitsounds':
+					case 'Modo 1mb Ram':
 						ClientPrefs.hitSounds = !ClientPrefs.hitSounds;
 
-					case 'Custom Scroll Speed':
+					case 'Scroll Speed Customizado':
 						ClientPrefs.scroll = !ClientPrefs.scroll;
 
 					case 'Data em Cache Persistente':
@@ -977,12 +977,12 @@ class PreferencesSubstate extends MusicBeatSubstate
 						if(ClientPrefs.speed < 0.5) ClientPrefs.speed = 0.5;
 						else if(ClientPrefs.speed > 4) ClientPrefs.speed = 4;
 
-					case 'Tamanho da Nota':
+					case 'Tamanho das Setas':
 						ClientPrefs.noteSize += add/20;
 						if(ClientPrefs.noteSize < 0.5) ClientPrefs.noteSize = 0.5;
 						else if(ClientPrefs.noteSize > 1.5) ClientPrefs.noteSize = 1.5;
 
-					case 'Note Delay':
+					case 'Delay das Setas':
 						var mult:Int = 1;
 						if(holdTime > 1.5) { //Double speed after 1.5 seconds holding
 							mult = 2;
@@ -1022,44 +1022,44 @@ class PreferencesSubstate extends MusicBeatSubstate
 
 		var daText:String = '';
 		switch(options[curSelected]) {
-			case 'Framerate':
-				daText = "Muito auto-explanatorio não é?\nO número normal é 60\nEu coloquei até 1 pra Ajudar os mobile";
-			case 'Note Delay':
+			case 'Framerate': 
+				daText = "Muito auto-explanatorio não é?\nO número normal é 60\nEu deixe o limite de 0 a 1000.";
+			case 'Delay das Setas':
 				daText = "Muda o quão tarde a nota vai spawnar\nUtíl pra não dar lag de audío pra quem tem Fones Bluetooth";
 			case 'Contador de FPS':
 				daText = "Se Desmarcado esconde o framerate.";
 			case 'Qualidade Baixa':
-				daText = "Se checado e... sla macho,\nsó sei que esconde a maioria dos objetos inuteis, fazendo o jogo roda liso";
+				daText = "Se checado,\n retira objetos inúteis, tais como objetos de cenario etc. (ajuda no Desempenho)";
 			case 'Data em Cache Persistente':
-				daText = "Se Marcado \nteu jogo salva as imagens em cache pra rodar mais rapido";
+				daText = "Se Marcado \nseu jogo irá salvar imagens e sprites em cache. (ajuda no carregamento)";
 			case 'Anti-Serrilhado':
-				daText = "Se Desmarcado Desativa \no Anti-Serrilhado, não deixa o jogo 790 fps 4k mas ajuda no fps";
+				daText = "Se Desmarcado Desativa \no Anti-Serrilhado, reduz a qualidade dos sprites. (ajuda no fps)";
 			case 'Downscroll':
 				daText = "Não precisa explicar.";
 			case 'Middlescroll':
-				daText = "sai pra la jogador de osu";
+				daText = "Deixa as Setas centralizadas \nE esconde as do oponente (sai pra la jogador de osu)";
 			case 'Ghost Tapping':
 				daText = "New Input resumido";
 			case 'Swearing':
 				daText = "If unchecked, your mom won't be angry at you.";
 			case 'Violence':
 				daText = "If unchecked, you won't get disgusted as frequently.";
-			case 'Custom Scroll Speed':
-				daText = "É Igual o Scroll Speed da Kade Engine";
+			case 'Scroll Speed Customizado':
+				daText = "É semelhante a como funciona o da Kade Engine.";
 			case 'Scroll Speed':
-				daText = "Velocidade da Nota (Custom tem que estar ativado)";
-			case 'Tamanho da Nota':
-				daText = "Size of notes and stuff";
+				daText = "Velocidade das Setas (Custom tem que estar ativado)";
+			case 'Tamanho das Setas':
+				daText = "Isso muda o Tamanho das setas";
 			case 'Note Splashes':
-				daText = "Se desmarcado, quando cê faz um \"Sick!\" não aparece os spleshis";
-			case 'Luzes Piscantes omg':
+				daText = "Se desmarcado, quando você acerta um \"Sick!\" não aparece os Splashes";
+			case 'Luzes Piscantes':
 				daText = "Desmarca se tu tem Epilepsia";
 			case 'Camera Zooms':
 				daText = "Se Desmarcado nao tem aqueles zooms loko.";
 			case 'Esconder HUD':
-				daText = "Deixa teu HUD limpim.";
+				daText = "Limpa o seu HUD. \n(aumento de desempenho)";
 			case 'Esconder Barra de Tempo':
-				daText = "Se checado não aparece a barra de tempo";
+				daText = "Se checado não aparece a barra de tempo.";
 			case 'Modo 1mb Ram':
 				daText = "Se checado o jogo vai ficar\nSuper Otimizado";
 		}
@@ -1114,7 +1114,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.globalAntialiasing;
 					case 'Note Splashes':
 						daValue = ClientPrefs.noteSplashes;
-					case 'Luzes Piscantes omg':
+					case 'Luzes Piscantes':
 						daValue = ClientPrefs.flashing;
 					case 'Downscroll':
 						daValue = ClientPrefs.downScroll;
@@ -1124,7 +1124,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.ghostTapping;
 					case 'Swearing':
 						daValue = ClientPrefs.cursing;
-					case 'Custom Scroll Speed':
+					case 'Scroll Speed Customizado':
 						daValue = ClientPrefs.scroll;
 					case 'Violence':
 						daValue = ClientPrefs.violence;
@@ -1134,7 +1134,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.hideHud;
 					case 'Data em Cache Persistente':
 						daValue = ClientPrefs.imagesPersist;
-					case 'Hide Song Length':
+					case 'Esconder Barra de Tempo':
 						daValue = ClientPrefs.hideTime;
 				}
 				checkbox.daValue = daValue;
@@ -1147,9 +1147,9 @@ class PreferencesSubstate extends MusicBeatSubstate
 				switch(options[textNumber[i]]) {
 					case 'Framerate':
 						daText = '' + ClientPrefs.framerate;
-					case 'Note Delay':
+					case 'Delay das Setas':
 						daText = ClientPrefs.noteOffset + 'ms';
-					case 'Tamanho da Nota':
+					case 'Tamanho das Setas':
 						daText = FlxStringUtil.formatMoney(ClientPrefs.noteSize) + 'x';
 						if (ClientPrefs.noteSize == 0.7) daText += "(Default)";
 					case 'Scroll Speed':
