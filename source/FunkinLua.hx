@@ -1,3 +1,9 @@
+package;
+
+
+// LUA ( Uma coisa ERRADA aqui, quebra o jogo inteiro, se for mexer, tenha
+// MUITO, MAS MUITO, CUIDADO. )
+// - MateusX02
 #if LUA_ALLOWED
 import llua.Lua;
 import llua.LuaL;
