@@ -12,7 +12,7 @@ import sys.FileSystem;
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
 #end
-import lime.system.System;
+import openfl.system.System;
 import flash.media.Sound;
 
 using StringTools;
@@ -41,7 +41,6 @@ class Paths
 		'achievements'
 	];
 	#end
-    
 	
 	public static function excludeAsset(key:String) {
 		if (!dumpExclusions.contains(key))
@@ -138,9 +137,6 @@ class Paths
 	static public function getLibraryPath(file:String, library = "preload")
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
-	}
-    inline static public function mods(key:String = '') {
-		return SUtil.getPath() + 'mods/' + key;
 	}
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
@@ -239,15 +235,6 @@ class Paths
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 	}
-		static public function modFolders(key:String) {
-		if(currentModDirectory != null && currentModDirectory.length > 0) {
-			var fileToCheck:String = mods(currentModDirectory + '/' + key);
-			if(FileSystem.exists(fileToCheck)) {
-				return fileToCheck;
-			}
-		}
-		return SUtil.getPath() + 'mods/' + key;
-	}
 
 	inline static public function getSparrowAtlaslua(key:String, ?library:String)
 	{
@@ -262,4 +249,20 @@ class Paths
 	inline static public function formatToSongPath(path:String) {
 		return path.toLowerCase().replace(' ', '-');
 	}
+	
+	#if MODS_ALLOWED
+	inline static public function mods(key:String = '') {
+		return 'mods/' + key;
+	}
+	
+	static public function modFolders(key:String) {
+		if(currentModDirectory != null && currentModDirectory.length > 0) {
+			var fileToCheck:String = mods(currentModDirectory + '/' + key);
+			if(FileSystem.exists(fileToCheck)) {
+				return fileToCheck;
+			}
+		}
+		return 'mods/' + key;
+	}
+	#end
 }
