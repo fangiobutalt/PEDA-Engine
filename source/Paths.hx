@@ -21,8 +21,27 @@ class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
-
+	
 	#if MODS_ALLOWED
+	public static var ignoreModFolders:Array<String> = [
+		'characters',
+		'custom_events',
+		'custom_notetypes',
+		'data',
+		'songs',
+		'music',
+		'sounds',
+		'shaders',
+		'videos',
+		'images',
+		'stages',
+		'weeks',
+		'fonts',
+		'scripts',
+		'achievements'
+	];
+	#end
+	
 	#if (haxe >= "4.0.0")
 	public static var customImagesLoaded:Map<String, Bool> = new Map();
 	#else
@@ -80,7 +99,9 @@ class Paths
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
 	}
-
+    inline static public function mods(key:String = '') {
+		return SUtil.getPath() + 'mods/' + key;
+	}
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
 		return '$library:assets/$library/$file';
@@ -117,11 +138,6 @@ class Paths
 	}
 
 	inline static public function lua(key:String, ?library:String)
-	{
-		return Main.path + getPath('$key.lua', TEXT, library);
-	}
-
-	inline static public function luaAsset(key:String, ?library:String)
 	{
 		return getPath('$key.lua', TEXT, library);
 	}
@@ -182,6 +198,15 @@ class Paths
 	inline static public function getSparrowAtlas(key:String, ?library:String)
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
+	}
+		static public function modFolders(key:String) {
+		if(currentModDirectory != null && currentModDirectory.length > 0) {
+			var fileToCheck:String = mods(currentModDirectory + '/' + key);
+			if(FileSystem.exists(fileToCheck)) {
+				return fileToCheck;
+			}
+		}
+		return SUtil.getPath() + 'mods/' + key;
 	}
 
 	inline static public function getSparrowAtlaslua(key:String, ?library:String)
