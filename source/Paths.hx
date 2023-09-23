@@ -41,7 +41,7 @@ class Paths
 		'achievements'
 	];
 	#end
-    }
+    
 	
 	public static function excludeAsset(key:String) {
 		if (!dumpExclusions.contains(key))
