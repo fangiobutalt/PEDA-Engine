@@ -170,9 +170,6 @@ class ChartingState extends MusicBeatState
 
 	override function create()
 	{
- 		#if MODS_ALLOWED
-		Paths.destroyLoadedImages();
- 		#end	
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Chart Editor", StringTools.replace(PlayState.SONG.song, '-', ' '));

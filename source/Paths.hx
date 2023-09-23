@@ -12,7 +12,7 @@ import sys.FileSystem;
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
 #end
-import lime.system.System;
+import openfl.system.System;
 import flash.media.Sound;
 
 using StringTools;
@@ -41,7 +41,6 @@ class Paths
 		'achievements'
 	];
 	#end
-    
 	
 	public static function excludeAsset(key:String) {
 		if (!dumpExclusions.contains(key))
@@ -53,13 +52,15 @@ class Paths
 		'assets/music/freakyMenu.$SOUND_EXT',
 		'assets/shared/music/breakfast.$SOUND_EXT'
 	];
+	
+	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedSounds:Map<String, Sound> = [];
 	/// haya I love you for the base cache dump I took to the max
 	public static function clearUnusedMemory() {
 		// clear non local assets in the tracked assets list
 		for (key in currentTrackedAssets.keys()) {
 			// if it is not currently contained within the used local assets
-			if (!localTrackedAssets.contains(key) 
-				&& !dumpExclusions.contains(key)) {
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key)) {
 				// get rid of it
 				var obj = currentTrackedAssets.get(key);
 				@:privateAccess
@@ -92,8 +93,7 @@ class Paths
 
 		// clear all sounds that are cached
 		for (key in currentTrackedSounds.keys()) {
-			if (!localTrackedAssets.contains(key) 
-			&& !dumpExclusions.contains(key) && key != null) {
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key) && key != null) {
 				//trace('test: ' + dumpExclusions, key);
 				Assets.cache.clear(key);
 				currentTrackedSounds.remove(key);
@@ -103,7 +103,6 @@ class Paths
 		localTrackedAssets = [];
 		openfl.Assets.cache.clear("songs");
 	}
-
 
 	static public var currentModDirectory:String = null;
 	static var currentLevel:String;
@@ -138,9 +137,6 @@ class Paths
 	static public function getLibraryPath(file:String, library = "preload")
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
-	}
-    inline static public function mods(key:String = '') {
-		return SUtil.getPath() + 'mods/' + key;
 	}
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
@@ -239,15 +235,6 @@ class Paths
 	{
 		return FlxAtlasFrames.fromSparrow(image(key, library), file('images/$key.xml', library));
 	}
-		static public function modFolders(key:String) {
-		if(currentModDirectory != null && currentModDirectory.length > 0) {
-			var fileToCheck:String = mods(currentModDirectory + '/' + key);
-			if(FileSystem.exists(fileToCheck)) {
-				return fileToCheck;
-			}
-		}
-		return SUtil.getPath() + 'mods/' + key;
-	}
 
 	inline static public function getSparrowAtlaslua(key:String, ?library:String)
 	{
@@ -262,4 +249,20 @@ class Paths
 	inline static public function formatToSongPath(path:String) {
 		return path.toLowerCase().replace(' ', '-');
 	}
+	
+	#if MODS_ALLOWED
+	inline static public function mods(key:String = '') {
+		return 'mods/' + key;
+	}
+	
+	static public function modFolders(key:String) {
+		if(currentModDirectory != null && currentModDirectory.length > 0) {
+			var fileToCheck:String = mods(currentModDirectory + '/' + key);
+			if(FileSystem.exists(fileToCheck)) {
+				return fileToCheck;
+			}
+		}
+		return 'mods/' + key;
+	}
+	#end
 }
