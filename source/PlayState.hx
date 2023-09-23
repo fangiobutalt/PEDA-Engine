@@ -965,6 +965,7 @@ class PlayState extends MusicBeatState
 			if (OpenFlAssets.exists(scriptPath))
 				luaArray.push(new FunkinLua(Asset2File.getPath(scriptPath)));
 		}
+	        #end
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
