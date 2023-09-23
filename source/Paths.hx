@@ -48,6 +48,7 @@ class Paths
 	public static var customImagesLoaded:Map<String, Bool> = new Map<String, Bool>();
 	#end
 	#end
+}
 	
 	public static function destroyLoadedImages(ignoreCheck:Bool = false) {
 		#if MODS_ALLOWED
