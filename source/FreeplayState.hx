@@ -48,9 +48,9 @@ class FreeplayState extends MusicBeatState
 
 	override function create()
 	{
-        #if MODS_ALLOWED
-		Paths.destroyLoadedImages();
- 		#end	
+		Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		
 		WeekData.reloadWeekFiles(false);
 		#if desktop
 		// Updating Discord Rich Presence
