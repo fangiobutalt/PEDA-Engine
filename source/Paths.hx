@@ -41,13 +41,6 @@ class Paths
 		'achievements'
 	];
 	#end
-	
-	#if (haxe >= "4.0.0")
-	public static var customImagesLoaded:Map<String, Bool> = new Map();
-	#else
-	public static var customImagesLoaded:Map<String, Bool> = new Map<String, Bool>();
-	#end
-	#end
 }
 	
 	public static function destroyLoadedImages(ignoreCheck:Bool = false) {
