@@ -48,9 +48,12 @@ class CreditsState extends MusicBeatState
 		var pisspoop = [ //Name - Icon name - Description - Link - BG Color
 			['PEDA Engine Devs'],
 			['Fang',		    'fang',		    'Dev Principal, Coder, Coverista e Artista de Icons',	 'https://youtube.com/@FangTheOnly',	   '0xFF2E86C1'],
-			['San/Otario/sucker',		    'otario',		    'Infelizmente ele nao faz parte do time mais, R.I.P San 2022',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'0xFFA9CCE3'],
+			['San/Otario/sucker',		    'otario',		    'Infelizmente ele nao faz parte do time mais,\n R.I.P San 2022',	 'https://www.youtube.com/channel/UC8b2WjEvzjh-1ctqBog_HKw',	'0xFFA9CCE3'],
 			['DreamStreamGT',		    'dream',		    'Artista da Engine',	 'https://youtube.com/channel/UCNZ8TIPngeOL-0qdwhztxeQ',	'0xFF48C9B0'],
 			['Meliante (Um Meliante Qualquer)',		    'meliante',		    'Artista Secundario e Pixel',	 'https://youtu.be/3SntaCpt5PE',	'0xFF2ECC71'],
+			['Vek',		    'vek',		    'Artista do menu, e dos controles',	 'https://m.youtube.com/watch?v=AglAe2J3hZg',	   '0xFF858d9d'],
+			['FNF BR',		    'fnfbr',		    'Programador',	 'https://youtube.com/@FNF-BR?si=_OYLj1nvvj6kkk0G',	   '0xFF00a3de'],
+			['IdkLool',		    'idklool',		    'Programador',	 'https://youtube.com/@idklool121?si=-Tw1ykEGDkoCWl7N',	   '0xFF006eff'],
 			['MateusX02',		    'mateusx02',		    'Ajudante e Coder Secundario (esse cara me ajudou pra caramba)',	 'https://youtube.com/@MateusX02',	   '0xFFFFFFFF'],
 			[''],
 			['Psych Engine Android Port (gay)'],
