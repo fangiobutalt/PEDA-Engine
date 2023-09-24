@@ -132,7 +132,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, null, 1);
         showPico = new FlxSprite(378, 5).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
-        showPico.screenCenter(X)
+        showPico.screenCenter(X);
         
 		showPico.visible = false;
 		
