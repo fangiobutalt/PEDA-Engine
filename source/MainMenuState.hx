@@ -122,24 +122,28 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, null, 1);
         showPicod = new FlxSprite(329, 3).loadGraphic(Paths.image('mainmenuchars/pico_dnt'));
 		add(showPicod);
-
+        showPicod.screenCenter(X);
+        
 		FlxG.camera.follow(camFollowPos, null, 1);
         showGFf = new FlxSprite(287, 12).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
 		add(showGFf);
+        showGFf.screenCenter(X);
 
 		FlxG.camera.follow(camFollowPos, null, 1);
         showPico = new FlxSprite(378, 5).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
-
+        showPico.screenCenter(X)
+        
 		showPico.visible = false;
 		
-        showBFs = new FlxSprite(357, 4).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
+        showBFs = new FlxSprite(357, -4).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
 		add(showBFs);
-
+        showBFs.screenCenter(X);
 		showBFs.visible = false;
 		
         showBFa = new FlxSprite(332, -40).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
 		add(showBFa);
+		showBFa.screenCenter(X);
 
 		showBFa.visible = false;
 		
@@ -152,7 +156,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' - V" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' - V" + "2.7", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
