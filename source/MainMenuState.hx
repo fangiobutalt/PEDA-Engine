@@ -122,28 +122,28 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollowPos, null, 1);
         showPicod = new FlxSprite(329, 3).loadGraphic(Paths.image('mainmenuchars/pico_dnt'));
 		add(showPicod);
-        showPicod.screenCenter(X);
+        showPicod.screenCenter();
         
 		FlxG.camera.follow(camFollowPos, null, 1);
         showGFf = new FlxSprite(287, 12).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
 		add(showGFf);
-        showGFf.screenCenter(X);
+        showGFf.screenCenter();
 
 		FlxG.camera.follow(camFollowPos, null, 1);
         showPico = new FlxSprite(378, 5).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
 		add(showPico);
-        showPico.screenCenter(X);
+        showPico.screenCenter()
         
 		showPico.visible = false;
 		
         showBFs = new FlxSprite(357, -4).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
 		add(showBFs);
-        showBFs.screenCenter(X);
+        showBFs.screenCenter();
 		showBFs.visible = false;
 		
         showBFa = new FlxSprite(332, -40).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
 		add(showBFa);
-		showBFa.screenCenter(X);
+		showBFa.screenCenter();
 
 		showBFa.visible = false;
 		
