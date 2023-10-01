@@ -658,7 +658,7 @@ class PlayState extends MusicBeatState
 
 		// "GLOBAL" SCRIPTS
 		#if LUA_ALLOWED
-		var daScripts:Array<String> = ['script', 'script1', 'script2', 'script3', 'script4']; // Não acho que preciso explicar isso (roubei meu próprio código) - Idklool
+		var daScripts:Array<String> = ['PrefsLua', 'CharSelect', 'script', 'script1', 'script2', 'script3', 'script4']; // Não acho que preciso explicar isso (roubei meu próprio código) - Idklool
 		for (script in daScripts) {
 			var scriptPath:String = Paths.getPreloadPath('scripts/' + script + '.lua');
 			if (OpenFlAssets.exists(scriptPath))
