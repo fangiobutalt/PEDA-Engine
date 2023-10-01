@@ -1,5 +1,5 @@
 function onStartCountdown()
-    if optimizedMode then
+    if getPropertyFromClass('ClientPrefs', 'optimizedMode', true) then
         triggerEvent('Change Character', 'dad', 'none')
         triggerEvent('Change Character', 'bf', 'none');
         triggerEvent('Change Character', 'gf', 'none');
