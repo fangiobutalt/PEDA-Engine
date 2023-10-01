@@ -41,7 +41,7 @@ class OptionsState extends MusicBeatState
 		DiscordClient.changePresence("Options Menu", null);
 		#end
 
-		menuBG = new FlxSprite().loadGraphic(Paths.image('menuBGMagenta'));
+		menuBG = new FlxSprite().loadGraphic(Paths.image('menuBGDesat'));
 		menuBG.color = 0xFFea71fd;
 		menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
 		menuBG.updateHitbox();
@@ -737,6 +737,7 @@ class PreferencesSubstate extends MusicBeatSubstate
 		'Qualidade Baixa',
 		'Anti-Serrilhado',
 		'Data em Cache Persistente',
+		'Modo tijolo gameplay',
 		#if !html5
 		'Framerate', //Apparently 120FPS isn't correctly supported on Browser? Probably it has some V-Sync shit enabled by default, idk
 		#end
@@ -939,11 +940,15 @@ class PreferencesSubstate extends MusicBeatSubstate
 					case 'Esconder HUD':
 						ClientPrefs.hideHud = !ClientPrefs.hideHud;
 
-					case 'Modo 1mb Ram':
+					case 'Hitsounds':
 						ClientPrefs.hitSounds = !ClientPrefs.hitSounds;
 
 					case 'Scroll Speed Customizado':
 						ClientPrefs.scroll = !ClientPrefs.scroll;
+						
+					case 'Modo tijolo gameplay':
+						ClientPrefs.optimizedMode = !ClientPrefs.optimizedMode;
+
 
 					case 'Data em Cache Persistente':
 						ClientPrefs.imagesPersist = !ClientPrefs.imagesPersist;
@@ -1060,8 +1065,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 				daText = "Limpa o seu HUD. \n(aumento de desempenho)";
 			case 'Esconder Barra de Tempo':
 				daText = "Se checado não aparece a barra de tempo.";
-			case 'Modo 1mb Ram':
-				daText = "Se checado o jogo vai ficar\nSuper Otimizado";
+			case 'Modo tijolo gameplay':
+				daText = "Se checado o jogo vai ficar otimizado pra um tijolo";
 		}
 		descText.text = daText;
 
@@ -1128,6 +1133,8 @@ class PreferencesSubstate extends MusicBeatSubstate
 						daValue = ClientPrefs.scroll;
 					case 'Violence':
 						daValue = ClientPrefs.violence;
+					case 'Modo tijolo gameplay':
+						daValue = ClientPrefs.optimizedMode;
 					case 'Camera Zooms':
 						daValue = ClientPrefs.camZooms;
 					case 'Esconder HUD':
