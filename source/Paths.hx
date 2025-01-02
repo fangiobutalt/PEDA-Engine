@@ -12,7 +12,7 @@ import sys.FileSystem;
 import flixel.graphics.FlxGraphic;
 import openfl.display.BitmapData;
 #end
-
+import openfl.system.System;
 import flash.media.Sound;
 
 using StringTools;
@@ -21,30 +21,88 @@ class Paths
 {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
-
+	
 	#if MODS_ALLOWED
-	#if (haxe >= "4.0.0")
-	public static var customImagesLoaded:Map<String, Bool> = new Map();
-	#else
-	public static var customImagesLoaded:Map<String, Bool> = new Map<String, Bool>();
+	public static var ignoreModFolders:Array<String> = [
+		'characters',
+		'custom_events',
+		'custom_notetypes',
+		'data',
+		'songs',
+		'music',
+		'sounds',
+		'shaders',
+		'videos',
+		'images',
+		'stages',
+		'weeks',
+		'fonts',
+		'scripts',
+		'achievements'
+	];
 	#end
-	#end
+	
+	public static function excludeAsset(key:String) {
+		if (!dumpExclusions.contains(key))
+			dumpExclusions.push(key);
+	}
 
-	public static function destroyLoadedImages(ignoreCheck:Bool = false) {
-		#if MODS_ALLOWED
-		if(!ignoreCheck && ClientPrefs.imagesPersist) return; //If there's 20+ images loaded, do a cleanup just for preventing a crash
-
-		for (key in customImagesLoaded.keys()) {
-			var graphic:FlxGraphic = FlxG.bitmap.get(key);
-			if(graphic != null) {
-				graphic.bitmap.dispose();
-				graphic.destroy();
-				FlxG.bitmap.removeByKey(key);
+	public static var dumpExclusions:Array<String> =
+	[
+		'assets/music/freakyMenu.$SOUND_EXT',
+		'assets/shared/music/breakfast.$SOUND_EXT'
+	];
+	
+	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
+	public static var currentTrackedSounds:Map<String, Sound> = [];
+	/// haya I love you for the base cache dump I took to the max
+	public static function clearUnusedMemory() {
+		// clear non local assets in the tracked assets list
+		for (key in currentTrackedAssets.keys()) {
+			// if it is not currently contained within the used local assets
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key)) {
+				// get rid of it
+				var obj = currentTrackedAssets.get(key);
+				@:privateAccess
+				if (obj != null) {
+					openfl.Assets.cache.removeBitmapData(key);
+					FlxG.bitmap._cache.remove(key);
+					obj.destroy();
+					currentTrackedAssets.remove(key);
+				}
 			}
 		}
-		Paths.customImagesLoaded.clear();
-		#end
-	}	
+		// run the garbage collector for good measure lmfao
+		System.gc();
+	}
+
+	// define the locally tracked assets
+	public static var localTrackedAssets:Array<String> = [];
+	public static function clearStoredMemory(?cleanUnused:Bool = false) {
+		// clear anything not in the tracked assets list
+		@:privateAccess
+		for (key in FlxG.bitmap._cache.keys())
+		{
+			var obj = FlxG.bitmap._cache.get(key);
+			if (obj != null && !currentTrackedAssets.exists(key)) {
+				openfl.Assets.cache.removeBitmapData(key);
+				FlxG.bitmap._cache.remove(key);
+				obj.destroy();
+			}
+		}
+
+		// clear all sounds that are cached
+		for (key in currentTrackedSounds.keys()) {
+			if (!localTrackedAssets.contains(key) && !dumpExclusions.contains(key) && key != null) {
+				//trace('test: ' + dumpExclusions, key);
+				Assets.cache.clear(key);
+				currentTrackedSounds.remove(key);
+			}
+		}	
+		// flags everything to be cleared out next unused memory clear
+		localTrackedAssets = [];
+		openfl.Assets.cache.clear("songs");
+	}
 
 	static public var currentModDirectory:String = null;
 	static var currentLevel:String;
@@ -80,7 +138,6 @@ class Paths
 	{
 		return if (library == "preload" || library == "default") getPreloadPath(file); else getLibraryPathForce(file, library);
 	}
-
 	inline static function getLibraryPathForce(file:String, library:String)
 	{
 		return '$library:assets/$library/$file';
@@ -117,11 +174,6 @@ class Paths
 	}
 
 	inline static public function lua(key:String, ?library:String)
-	{
-		return Main.path + getPath('$key.lua', TEXT, library);
-	}
-
-	inline static public function luaAsset(key:String, ?library:String)
 	{
 		return getPath('$key.lua', TEXT, library);
 	}
@@ -197,4 +249,20 @@ class Paths
 	inline static public function formatToSongPath(path:String) {
 		return path.toLowerCase().replace(' ', '-');
 	}
+	
+	#if MODS_ALLOWED
+	inline static public function mods(key:String = '') {
+		return 'mods/' + key;
+	}
+	
+	static public function modFolders(key:String) {
+		if(currentModDirectory != null && currentModDirectory.length > 0) {
+			var fileToCheck:String = mods(currentModDirectory + '/' + key);
+			if(FileSystem.exists(fileToCheck)) {
+				return fileToCheck;
+			}
+		}
+		return 'mods/' + key;
+	}
+	#end
 }

@@ -3,8 +3,8 @@ Provavelmente, a Melhor Engine Mobile até agora!
 ## Instalação:
 É....
 Instala pelo source mesmo
-A versão ainda está em fase de teste e estamos
-restaurando ela aos poucos
+A versão ainda está em desenvolvimento então
+Pode ocorrer bugs
 ## Créditos:
 • DreamStreamGT - Artista da Engine
 
@@ -12,16 +12,22 @@ restaurando ela aos poucos
 
 • San - Recortador de sprites
 
-• Meliante - Artista Secundário
+• Meliante - Artista
 
-• MateusX02 - Coder secundário e ajudante
+• MateusX02 - Coder e ajudante (ou a pessoa que fez a engine não ir pro saco)
+
+• Vek - Artista
+
+• FloweyGG - Artista
+
+• FNF BR - Coder
+
 Aviso: essa engine está em cima da Psych. Créditos aos criadores originais
 _____________________________________
 
 ## - Recursos e Melhorias -
 * Agora realmente a Engine está 100% traduzida
 * Otimização sem tirar a experiência original
-* WideScreen (Estado Beta ainda)
 * Icons Balançando
 * Engine 100% Accésivel
 * Músicas extras!

@@ -265,9 +265,6 @@ class PlayState extends MusicBeatState
 
 	override public function create()
 	{
-        #if MODS_ALLOWED
- 		Paths.destroyLoadedImages(resetSpriteCache);
-  		#end	
 		resetSpriteCache = false;
 
 		if (FlxG.sound.music != null)
@@ -638,9 +635,8 @@ class PlayState extends MusicBeatState
 				}
 		}
 
-		if(isPixelStage) {
+		if(isPixelStage)
 			introSoundsSuffix = '-pixel';
-		}
 
 		add(gfGroup);
 
@@ -651,22 +647,29 @@ class PlayState extends MusicBeatState
 		add(dadGroup);
 		add(boyfriendGroup);
 		
-		if(curStage == 'spooky') {
+		if(curStage == 'spooky')
 			add(halloweenWhite);
-		}
 
+		#if LUA_ALLOWED
 		luaDebugGroup = new FlxTypedGroup<DebugLuaText>();
 		luaDebugGroup.cameras = [camOther];
 		add(luaDebugGroup);
+		#end
 
-        var doPush:Bool = false;
-
-		var doPush:Bool = false;
-		var luaFile:String = 'stages/' + curStage + '.lua';
-		luaFile = Paths.getPreloadPath(luaFile);
-		if(OpenFlAssets.exists(luaFile)) {
-			doPush = true;
+		// "GLOBAL" SCRIPTS
+		#if LUA_ALLOWED
+		var daScripts:Array<String> = ['script', 'script1', 'script2', 'script3', 'script4', 'script5', 'script6']; // Não acho que preciso explicar isso (roubei meu próprio código) - Idklool
+		for (script in daScripts) {
+			var scriptPath:String = Paths.getPreloadPath('scripts/' + script + '.lua');
+			if (OpenFlAssets.exists(scriptPath))
+				luaArray.push(new FunkinLua(Asset2File.getPath(scriptPath)));
 		}
+		#end
+
+		// STAGE SCRIPTS
+		#if (MODS_ALLOWED && LUA_ALLOWED)
+		startLuasOnFolder('stages/' + curStage + '.lua');
+		#end
 
 		if(curStage == 'philly') {
 			phillyCityLightsEvent = new FlxTypedGroup<BGSprite>();
@@ -680,9 +683,6 @@ class PlayState extends MusicBeatState
 			}
 		}
 		
-		if(doPush) 
-			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));
-
 		if(!modchartSprites.exists('blammedLightsBlack')) { //Creates blammed light black fade in case you didn't make your own
 			blammedLightsBlack = new ModchartSprite(FlxG.width * -0.5, FlxG.height * -0.5);
 			blammedLightsBlack.makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
@@ -751,14 +751,13 @@ class PlayState extends MusicBeatState
 		}
 
 		var file:String = Paths.json(songName + '/dialogue'); //Checks for json/Psych Engine dialogue
-		if (OpenFlAssets.exists(file)) {
+		if (OpenFlAssets.exists(file))
 			dialogueJson = DialogueBoxPsych.parseDialogue(file);
-		}
 
 		var file:String = Paths.txt(songName + '/' + songName + 'Dialogue'); //Checks for vanilla/Senpai dialogue
-		if (OpenFlAssets.exists(file)) {
+		if (OpenFlAssets.exists(file))
 			dialogue = CoolUtil.coolTextFile(file);
-		}
+
 		var doof:DialogueBox = new DialogueBox(false, dialogue);
 		// doof.x += 70;
 		// doof.y = FlxG.height * 0.5;
@@ -818,28 +817,6 @@ class PlayState extends MusicBeatState
 
 		generateSong(SONG.song);
 		
-		#if LUA_ALLOWED
-		for (notetype in noteTypeMap.keys()) {
-			var luaToLoad:String = 'custom_notetypes/' + notetype + '.lua';
-		    luaToLoad = Paths.getPreloadPath(luaToLoad);			
-			if(OpenFlAssets.exists(luaToLoad)) {
-				luaArray.push(new FunkinLua(Asset2File.getPath(luaToLoad)));
-			}
-		}
-		for (event in eventPushedMap.keys()) {
-			var luaToLoad:String = 'custom_events/' + event + '.lua';
-		    luaToLoad = Paths.getPreloadPath(luaToLoad);			
-			if(OpenFlAssets.exists(luaToLoad)) {
-				luaArray.push(new FunkinLua(Asset2File.getPath(luaToLoad)));
-			}
-		}	
-		#end		
-
-		noteTypeMap.clear();
-		noteTypeMap = null;
-		eventPushedMap.clear();
-		eventPushedMap = null;
-
 		// After all characters being loaded, it makes then invisible 0.01s later so that the player won't freeze when you change characters
 		// add(strumLine);
 
@@ -933,7 +910,6 @@ class PlayState extends MusicBeatState
 		timeBar.cameras = [camHUD];
 		timeBarBG.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
-		doof.cameras = [camHUD];
 
 		#if mobileC
 			mcontrols = new Mobilecontrols();
@@ -965,18 +941,31 @@ class PlayState extends MusicBeatState
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 		updateTime = true;
-
-		#if (MODS_ALLOWED && LUA_ALLOWED)
-		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script.lua';
-	    luaFile = Paths.getPreloadPath(luaFile);
-		    if(OpenFlAssets.exists(luaFile)) {
-				doPush = true;
-			}
 		
-		if(doPush) 
-			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));			
-		#end		
+		#if LUA_ALLOWED
+		for (notetype in noteTypeMap.keys())
+		{
+			startLuasOnFolder('custom_notetypes/' + notetype + '.lua');
+		}
+		for (event in eventPushedMap.keys())
+		{
+			startLuasOnFolder('custom_events/' + event + '.lua');
+		}
+		#end
+		noteTypeMap.clear();
+		noteTypeMap = null;
+		eventPushedMap.clear();
+		eventPushedMap = null;
+
+		// SONG SPECIFIC SCRIPTS
+		#if LUA_ALLOWED
+		var daScripts:Array<String> = ['script', 'script1', 'script2', 'script3', 'script4']; // Não acho que preciso explicar isso (roubei meu próprio código) -Idklool 
+		for (script in daScripts) {
+		var scriptPath:String = Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/' + script + '.lua');
+			if (OpenFlAssets.exists(scriptPath))
+				luaArray.push(new FunkinLua(Asset2File.getPath(scriptPath)));
+		}
+	        #end
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
@@ -3155,6 +3144,7 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
 		rating.visible = !ClientPrefs.hideHud;
+        rating.cameras = [camHUD];
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 		comboSpr.screenCenter();
@@ -3162,7 +3152,7 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = 600;
 		comboSpr.velocity.y -= 150;
 		comboSpr.visible = !ClientPrefs.hideHud;
-
+        comboSpr.cameras = [camHUD];
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 		add(rating);
 
@@ -3213,6 +3203,7 @@ class PlayState extends MusicBeatState
 			numScore.acceleration.y = FlxG.random.int(200, 300);
 			numScore.velocity.y -= FlxG.random.int(140, 160);
 			numScore.velocity.x = FlxG.random.float(-5, 5);
+            numScore.cameras = [camHUD];
 			numScore.visible = !ClientPrefs.hideHud;
 
 			if (combo >= 10 || combo == 0)
@@ -3303,7 +3294,7 @@ class PlayState extends MusicBeatState
 							&& !daNote.wasGoodHit && daNote.noteData == i) {
 								sortedNotesList.push(daNote);
 								notesDatas.push(daNote.noteData);
-								canMiss = true;
+								canMiss = false;
 							}
 						});
 						sortedNotesList.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
@@ -3939,6 +3930,24 @@ class PlayState extends MusicBeatState
 		setOnLuas('curBeat', curBeat);
 		callOnLuas('onBeatHit', []);
 	}
+	
+	#if LUA_ALLOWED
+	public function startLuasOnFolder(luaFile:String)
+	{
+		for (script in luaArray)
+		{
+			if(script.scriptName == luaFile) return false;
+		}
+		
+		var luaToLoad:String = Paths.getPreloadPath(luaFile);
+		if(OpenFlAssets.exists(luaToLoad))
+		{
+			luaArray.push(new FunkinLua(Asset2File.getPath(luaToLoad)));
+			return true;
+		}
+		return false;
+	}
+	#end
 
 	public function callOnLuas(event:String, args:Array<Dynamic>):Dynamic {
 		var returnVal:Dynamic = FunkinLua.Function_Continue;

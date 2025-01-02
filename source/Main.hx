@@ -9,6 +9,7 @@ import openfl.display.FPS;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import lime.system.System;
+import openfl.display.Bitmap;
 
 class Main extends Sprite
 {
@@ -31,6 +32,7 @@ class Main extends Sprite
 		Lib.current.addChild(new Main());
 	}
 
+	
 	public function new()
 	{
 		super();
@@ -73,6 +75,7 @@ class Main extends Sprite
 		initialState = TitleState;
 		#end
 
+		
 		ClientPrefs.startControls();
 		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen));

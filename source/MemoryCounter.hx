@@ -22,7 +22,7 @@ class MemoryCounter extends TextField
 		x = inX;
 		y = inY;
 		selectable = false;
-		defaultTextFormat = new TextFormat("VCR OSD Mono", 14, inCol);
+		defaultTextFormat = new TextFormat("VCR OSD Mono", 10, inCol);
 
 		addEventListener(Event.ENTER_FRAME, onEnter);
 		width = 190;

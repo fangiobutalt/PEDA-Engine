@@ -25,7 +25,7 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
 	public static var psychEngineVersion:String = '0.4.2'; //This is also used for Discord RPC
-	public static var pedaEngineVersion:String = '0.5.1 (inDev Build)';
+	public static var pedaEngineVersion:String = '0.6.2-stable';
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -34,6 +34,8 @@ class MainMenuState extends MusicBeatState
     private var showPico:FlxSprite;
     private var showBFs:FlxSprite;
     private var showBFa:FlxSprite;
+    private var showGFf:FlxSprite;
+    private var showPicod:FlxSprite;
     
 	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if !switch 'donate', #end 'options'];
 
@@ -43,6 +45,7 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
@@ -117,17 +120,26 @@ class MainMenuState extends MusicBeatState
 		}
 
 		FlxG.camera.follow(camFollowPos, null, 1);
-        showPico = new FlxSprite(500, 190).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
-		add(showPico);
+        showPicod = new FlxSprite(329, 250).loadGraphic(Paths.image('mainmenuchars/pico_dnt'));
+		add(showPicod);
+        
+		FlxG.camera.follow(camFollowPos, null, 1);
+        showGFf = new FlxSprite(287, -10).loadGraphic(Paths.image('mainmenuchars/gf_fp'));
+		add(showGFf);
 
+
+		FlxG.camera.follow(camFollowPos, null, 1);
+        showPico = new FlxSprite(378, 500).loadGraphic(Paths.image('mainmenuchars/pico_mech'));
+		add(showPico);
+        
 		showPico.visible = false;
 		
-        showBFs = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
+        showBFs = new FlxSprite(450, -200).loadGraphic(Paths.image('mainmenuchars/bf_sm'));
 		add(showBFs);
 
 		showBFs.visible = false;
 		
-        showBFa = new FlxSprite(500, -120).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
+        showBFa = new FlxSprite(210, 0).loadGraphic(Paths.image('mainmenuchars/bf_aw'));
 		add(showBFa);
 
 		showBFa.visible = false;
@@ -141,7 +153,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' - V" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' - V" + "2.7", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -191,6 +203,20 @@ class MainMenuState extends MusicBeatState
 		var lerpVal:Float = CoolUtil.boundTo(elapsed * 5.6, 0, 1);
 		camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
 		
+		if (optionShit[curSelected] == 'donate')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showPicod.updateHitbox();
+				showPicod.visible = true;	
+			}
+			
+			else
+	
+			{
+				showPicod.visible = false;
+			}
+		
 		if (optionShit[curSelected] == 'options')
 			{
 				changeItem(-1);
@@ -232,6 +258,20 @@ class MainMenuState extends MusicBeatState
 	
 			{
 				showBFa.visible = false;
+			}
+			
+					if (optionShit[curSelected] == 'freeplay')
+			{
+				changeItem(-1);
+				changeItem(1);
+				showGFf.updateHitbox();
+				showGFf.visible = true;	
+			}
+			
+			else
+	
+			{
+				showGFf.visible = false;
 			}
 			
 			
